@@ -1,8 +1,8 @@
-import express    from "express";
-import connect    from "./connect";
+import express from "express";
+import connect from "./connect";
 import bodyParser from "body-parser";
-import cors       from "cors";
-import morgan     from "morgan";
+import cors from "cors";
+import morgan from "morgan";
 
 import { configuration } from "../config/config";
 
@@ -24,6 +24,9 @@ app.use(morgan("dev"));
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });
+
+// api routes
+app.use("/api/auth", require("./routes/auth.routes"));
 
 // DB configuration
 const db: string = configuration.db_url.toString();
