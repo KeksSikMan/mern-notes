@@ -6,7 +6,7 @@ import morgan from "morgan";
 
 import { configuration } from "../config/config";
 
-// initialize configuration
+// initialize server configuration
 const app: express.Application = express();
 const port = configuration.port || 8080;
 
@@ -20,13 +20,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 // Logger Middleware
 app.use(morgan("dev"));
 
+// api routes
+app.use("/api/auth", require("./routes/auth.routes"));
+
 //
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });
-
-// api routes
-app.use("/api/auth", require("./routes/auth.routes"));
 
 // DB configuration
 const db: string = configuration.db_url.toString();
