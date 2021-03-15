@@ -2,14 +2,14 @@ import express, { Request, Response } from "express";
 import { check, validationResult } from "express-validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import config from "config";
 
+import { configuration } from "../../config/config";
 import auth from "../middleware/auth";
 import User from "../models/user.model";
 
 const router = express();
 
-const jwtSecret: string = config.get("jwtSecret");
+const jwtSecret: string = configuration.jwt_secret;
 
 // route - /api/auth/signup
 router.post(

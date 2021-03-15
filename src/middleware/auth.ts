@@ -1,8 +1,9 @@
 import * as express from "express";
 import jwt from "jsonwebtoken";
-import config from "config";
 
-const jwtSecret: string = config.get("jwtSecret");
+import { configuration } from "../../config/config";
+
+const jwtSecret: string = configuration.jwt_secret;
 
 interface IUserRequest extends express.Request {
   user: any;
