@@ -1,7 +1,0 @@
-{
-    "port": "8080",
-    "dbConfig": {
-        "connectionUrl": "mongodb+srv://admin:VaYcmlYnEn5fZmW3@cluster0.qh186.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-    },
-    "jwtSecret": "secret"
-}

@@ -6,7 +6,7 @@ import morgan from "morgan";
 
 import { configuration } from "../config/config";
 
-// configuration
+// initialize configuration
 const app: express.Application = express();
 const port = configuration.port || 8080;
 

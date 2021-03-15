@@ -1,7 +1,8 @@
 // config.ts
-import config from "config";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const configuration = {
-  port: config.get("port"),
-  db_url: config.get("dbConfig.connectionUrl"),
+  port: process.env.SERVER_PORT,
+  db_url: process.env.CONNECTION_URL,
 };
