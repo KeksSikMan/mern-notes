@@ -6,7 +6,7 @@ import { configuration } from "../../config/config";
 const jwtSecret: string = configuration.jwt_secret;
 
 interface IUserRequest extends express.Request {
-  user: any;
+  user: string | object;
 }
 
 export default (
@@ -15,7 +15,6 @@ export default (
   next: express.NextFunction
 ) => {
   const token = req.header("x-auth-token");
-
   // Check for token
   if (!token)
     return res.status(401).json({ message: "No token, authorization denied" });

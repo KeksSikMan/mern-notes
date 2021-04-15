@@ -94,7 +94,7 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ message: "The entered email or password is not correct" });
+          .json({ message: "The entered emaill or password is not correct" });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
@@ -131,7 +131,8 @@ interface IUserRequest extends express.Request {
 // route - /api/auth/user
 router.get("/user", auth, async (req: IUserRequest, res: Response) => {
   try {
-    const user = await User.findById(req.user.id).select("-password");
+    const user = await User.findById(req.user.userId).select("-password");
+    //console.log(user);
     if (!user) throw Error("User does not exist");
     res.json(user);
   } catch (e) {

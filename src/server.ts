@@ -1,10 +1,10 @@
 import express from "express";
-import connect from "./connect";
 import bodyParser from "body-parser";
 import cors from "cors";
 import morgan from "morgan";
 
 import { configuration } from "../config/config";
+import connect from "./connect";
 
 // initialize server configuration
 const app: express.Application = express();
