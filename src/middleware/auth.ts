@@ -1,13 +1,10 @@
 import * as express from "express";
+import { IUserRequest } from "interfaces";
 import jwt from "jsonwebtoken";
 
 import { configuration } from "../../config/config";
 
 const jwtSecret: string = configuration.jwt_secret;
-
-interface IUserRequest extends express.Request {
-  user: string | object;
-}
 
 export default (
   req: IUserRequest,
@@ -22,7 +19,6 @@ export default (
   try {
     // Verify token
     const decoded = jwt.verify(token, jwtSecret);
-    // Add user from payload
     req.user = decoded;
     next();
   } catch (e) {

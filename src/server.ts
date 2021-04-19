@@ -2,8 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import morgan from "morgan";
-
 import { configuration } from "../config/config";
+// Connect to DB
 import connect from "./connect";
 
 // initialize server configuration
@@ -23,7 +23,7 @@ app.use(morgan("dev"));
 // api routes
 app.use("/api/auth", require("./routes/auth.routes"));
 
-//
+// Listener
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });

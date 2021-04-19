@@ -11,7 +11,7 @@ const router = express();
 
 const jwtSecret: string = configuration.jwt_secret;
 
-// route - /api/auth/signup
+/* Registration, route - /api/auth/signup */
 router.post(
   "/signup",
   [
@@ -64,12 +64,12 @@ router.post(
         },
       });
     } catch (e) {
-      res.status(500).json({ message: "Error registration" });
+      res.status(500).json({ message: "ERROR: failed registration." });
     }
   }
 );
 
-// route - /api/auth/signin
+/* Authorization, route - /api/auth/signin */
 router.post(
   "/signin",
   [
@@ -119,7 +119,7 @@ router.post(
         },
       });
     } catch (e) {
-      res.status(500).json({ message: "Error login" });
+      res.status(500).json({ message: "ERROR: failed authorization" });
     }
   }
 );
@@ -128,7 +128,7 @@ interface IUserRequest extends express.Request {
   user: any;
 }
 
-// route - /api/auth/user
+/* Get user, route - /api/auth/user */
 router.get("/user", auth, async (req: IUserRequest, res: Response) => {
   try {
     const user = await User.findById(req.user.userId).select("-password");
@@ -136,7 +136,7 @@ router.get("/user", auth, async (req: IUserRequest, res: Response) => {
     if (!user) throw Error("User does not exist");
     res.json(user);
   } catch (e) {
-    res.status(400).json({ msg: e.message });
+    res.status(400).json({ message: e.message });
   }
 });
 
