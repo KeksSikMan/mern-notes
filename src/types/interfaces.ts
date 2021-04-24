@@ -1,5 +1,6 @@
 /* Routes */
 import { Request } from "express";
+import { Document } from "mongoose";
 
 export interface IUserRequest extends Request {
   user: any;
@@ -15,9 +16,8 @@ export interface IUser extends Document {
 
 export interface ISection extends Document {
   name: string;
-  color: string;
-  timestamp: Date;
-  description: string;
-  favorite: boolean;
-  //owner: Object;
+  color?: string;
+  description?: string;
+  favorite?: boolean;
+  owner: Object;
 }

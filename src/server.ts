@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import morgan from "morgan";
 import { config } from "../config/config";
-// Connect to DB
+// Connect to Mongo DB
 import connect from "./connect";
 
 // initialize server configuration
@@ -22,6 +22,7 @@ app.use(morgan("dev"));
 
 // api routes
 app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/section", require("./routes/section.routes"));
 
 // Listener
 app.listen(port, () => {
