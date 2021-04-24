@@ -31,14 +31,17 @@ router.post("/create", auth, async (req: IUserRequest, res: Response) => {
   }
 });
 
-/* Update section, /api/section/{id} */
-router.put(":id/update", auth, async () => {
+/* Update section, route - /api/section/{id} */
+router.put("/:id/update", auth, async () => {
   try {
+
+    
+
   } catch (e) {}
 });
 
-/* Delete section, /api/section/{id} */
-router.delete(":id/delete", auth, async () => {
+/* Delete section, route - /api/section/{id} */
+router.delete("/:{id}/delete", auth, async () => {
   try {
   } catch (e) {}
 });

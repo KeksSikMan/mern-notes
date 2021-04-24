@@ -1,17 +1,14 @@
 import mongoose from "mongoose";
+import { config } from "../config/config";
 
-export type TInput = {
-  db: string;
-};
+const db = config.mongo.db_url;
 
-export default ({ db }: TInput) => {
+const options = config.mongo.options;
+
+export default () => {
   const connect = () => {
     mongoose
-      .connect(db, {
-        useCreateIndex: true,
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      })
+      .connect(db, options)
       .then(() => {
         return console.info(`Successfully connected to ${db}`);
       })

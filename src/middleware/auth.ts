@@ -2,9 +2,9 @@ import * as express from "express";
 import { IUserRequest } from "interfaces";
 import jwt from "jsonwebtoken";
 
-import { configuration } from "../../config/config";
+import { config } from "../../config/config";
 
-const jwtSecret: string = configuration.jwt_secret;
+const jwtSecret: string = config.jwt_secret;
 
 export default (
   req: IUserRequest,

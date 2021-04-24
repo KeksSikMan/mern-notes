@@ -3,13 +3,13 @@ import { check, validationResult } from "express-validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import { configuration } from "../../config/config";
+import { config } from "../../config/config";
 import auth from "../middleware/auth";
 import User from "../models/user.model";
 
 const router = express();
 
-const jwtSecret: string = configuration.jwt_secret;
+const jwtSecret: string = config.jwt_secret;
 
 /* Registration, route - /api/auth/signup */
 router.post(

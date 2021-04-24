@@ -2,13 +2,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import morgan from "morgan";
-import { configuration } from "../config/config";
+import { config } from "../config/config";
 // Connect to DB
 import connect from "./connect";
 
 // initialize server configuration
 const app: express.Application = express();
-const port = configuration.port || 8080;
+const port = config.server.port || 8080;
 
 // CORS Middleware
 app.use(cors());
@@ -28,6 +28,5 @@ app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });
 
-// DB configuration
-const db: string = configuration.db_url.toString();
-connect({ db });
+// DB connect
+connect();
