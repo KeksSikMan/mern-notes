@@ -8,7 +8,7 @@ const router = express();
 /* Create section, route - /api/section/create*/
 router.post("/create", auth, async (req: IUserRequest, res: Response) => {
   try {
-    const { name } = req.body;
+    const { name, description, favorite, color } = req.body;
 
     const existing = await Section.findOne({ name });
 
@@ -18,39 +18,66 @@ router.post("/create", auth, async (req: IUserRequest, res: Response) => {
 
     const section = new Section({
       name,
+      description,
+      favorite,
+      color,
       owner: req.user.userId,
     });
 
     await section.save();
 
     res.status(201).json({ section });
-  } catch (e) {
-    res.status(500).json({ message: "ERROR: the section doesn't create." });
+  } catch (err) {
+    res.status(500).json({
+      message: "ERROR: the section doesn't create.",
+      err: err.message,
+    });
   }
 });
 
 /* Update section, route - /api/section/{id} */
-router.put("/:id/update", auth, async () => {
+// don`t worked
+router.patch("/:idSection", auth, async (req: IUserRequest, res: Response) => {
   try {
-  } catch (e) {}
+    const id = req.params.idSection;
+    const updates = req.body;
+    console.log(id, updates);
+    const section = Section.findByIdAndUpdate(id, updates);
+
+    res.status(200).json(section);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
-/* Delete section, route - /api/section/{id} */
-router.delete("/:{id}/delete", auth, async () => {
+/* Delete section, route - /api/section/:idSection */
+router.delete("/:idSection", auth, async (req: IUserRequest, res: Response) => {
   try {
-  } catch (e) {}
+    const section = await Section.remove({ _id: req.params.idSection });
+    res.status(200).json({ section: section });
+  } catch (err) {
+    res.status(500).json({ message: err.message, err });
+  }
 });
 
-/* Get sections, route - /api/section/all */
-router.get("/all", auth, async (req: IUserRequest, res: Response) => {
-  Section.find({ owner: req.user.userId })
-    .exec()
-    .then((results) => {
-      return res.status(200).json({ section: results });
-    })
-    .catch((e) => {
-      return res.status(500).json({ message: e.message, e });
-    });
+/* Get section, route - /api/section/:idSection */
+router.get("/:idSection", auth, async (req: IUserRequest, res: Response) => {
+  try {
+    const section = await Section.findById(req.params.idSection);
+    res.status(200).json({ section: section });
+  } catch (err) {
+    res.status(500).json({ message: err.message, err });
+  }
+});
+
+/* Get all sections, route - /api/section/ */
+router.get("/", auth, async (req: IUserRequest, res: Response) => {
+  try {
+    const section = await Section.find({ owner: req.user.userId });
+    res.status(200).json({ section: section });
+  } catch (err) {
+    res.status(500).json({ message: err.message, err });
+  }
 });
 
 module.exports = router;

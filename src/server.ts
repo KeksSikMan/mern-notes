@@ -26,7 +26,7 @@ app.use("/api/section", require("./routes/section.routes"));
 
 // Listener
 app.listen(port, () => {
-  console.log(`server started at http://localhost:${port}`);
+  console.log(`Server started at http://localhost:${port}`);
 });
 
 // DB connect
