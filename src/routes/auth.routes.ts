@@ -29,10 +29,6 @@ router.post(
   signIn
 );
 
-interface IUserRequest extends express.Request {
-  user: any;
-}
-
 /* Get user, route - /api/auth/user */
 router.get("/user", auth, getUser);
 
