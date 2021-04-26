@@ -1,5 +1,9 @@
+# vs
+/.vs
+
 # dependencies
 /node_modules
+/.pnp
 
-# env
+# misc
 .env
