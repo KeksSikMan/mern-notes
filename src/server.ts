@@ -8,7 +8,8 @@ import connect from "./connect";
 
 // initialize server configuration
 const app: express.Application = express();
-const port = config.server.port || 8080;
+const port = config.server.port;
+const hostname = config.server.hostname;
 
 // CORS Middleware
 app.use(cors());
@@ -27,7 +28,7 @@ app.use("/api/section", require("./routes/notes.routes"));
 
 // Listener
 app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`);
+  console.log(`Server started at http://${hostname}:${port}`);
 });
 
 // DB connect
