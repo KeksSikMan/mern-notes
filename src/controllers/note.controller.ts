@@ -1,6 +1,5 @@
-import express, { Response } from "express";
+import { Response } from "express";
 import Section from "../models/section.model";
-import auth from "../middleware/auth";
 import { IUserRequest } from "interfaces";
 
 /** Insert new note */
