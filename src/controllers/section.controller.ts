@@ -6,14 +6,13 @@ import { IUserRequest } from "interfaces";
 /** Create section */
 export const createSection = async (req: IUserRequest, res: Response) => {
   try {
-    const { title, description, favorite, color, notes } = req.body;
+    const { title, description, favorite, color } = req.body;
 
     const section = new Section({
       title,
       description,
       favorite,
       color,
-      notes,
       owner: req.user.userId,
     });
     await section.save();

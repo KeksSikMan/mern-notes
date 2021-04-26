@@ -1,6 +1,5 @@
 import mongoose, { Schema } from "mongoose";
 import { ISection } from "interfaces";
-import { NoteSchema } from "./note.schema";
 
 const SectionSchema: Schema = new Schema(
   {
@@ -8,7 +7,6 @@ const SectionSchema: Schema = new Schema(
     favorite: { type: Boolean, default: false },
     color: { type: String, required: false, default: "#FFFFFF" },
     description: { type: String, required: false, default: "" },
-    notes: [NoteSchema],
     owner: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   {
@@ -16,4 +14,4 @@ const SectionSchema: Schema = new Schema(
   }
 );
 
-export default mongoose.model<ISection>("Section", SectionSchema);
+export default mongoose.model<ISection>("Sections", SectionSchema);

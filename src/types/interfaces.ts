@@ -6,6 +6,12 @@ export interface IUserRequest extends Request {
   user: any;
 }
 
+export enum Align {
+  left = 1,
+  center,
+  right,
+}
+
 /* Models */
 export interface IUser extends Document {
   email: string;
@@ -14,12 +20,21 @@ export interface IUser extends Document {
   password: string;
 }
 
+export interface IElement {
+  text: String;
+  isList: Boolean;
+  isTask: Boolean;
+  indet: Number;
+  alignment: Align;
+}
+
 export interface INote extends Document {
   title: string;
   color?: string;
   description?: string;
   favorite?: boolean;
-  text?: string;
+  element?: IElement;
+  section: Object;
 }
 
 export interface ISection extends Document {
