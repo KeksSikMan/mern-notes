@@ -1,6 +1,6 @@
 import { Response } from "express";
 import Note from "../models/note.schema";
-import { INote, IUserRequest } from "../types/interfaces";
+import { IElement, INote, IUserRequest } from "../types/interfaces";
 
 /** Create new note */
 export const createNote = async (req: IUserRequest, res: Response) => {
@@ -63,4 +63,44 @@ export const updateNote = async (req: IUserRequest, res: Response) => {
   }
 };
 
+export const updateContent = async (req: IUserRequest, res: Response) => {
+  try {
+    const id = req.params.idNote;
+    const content: IElement = req.body;
+    const note = await Note.findByIdAndUpdate(
+      id,
+      {
+        $addToSet: { content },
+      },
+      {
+        upsert: true,
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(200).json(note);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 
+export const clearContent = async (req: IUserRequest, res: Response) => {
+  try {
+    const id = req.params.idNote;
+    const content: IElement = req.body;
+    const note = await Note.findByIdAndUpdate(
+      id,
+      {
+        $pull: { content: {} },
+      },
+      {
+        upsert: true,
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(200).json(note);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

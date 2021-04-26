@@ -3,7 +3,7 @@ import { Align, INote } from "../types/interfaces";
 
 const Element: Schema = new Schema(
   {
-    text: { type: String, required: false },
+    text: { type: String, required: false, default: "" },
     isList: { type: Boolean, default: false },
     isTask: { type: Boolean, default: false },
     indet: { type: Number, default: 0 },
