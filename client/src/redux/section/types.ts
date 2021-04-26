@@ -1,0 +1,2 @@
+export const CREATE_SECTION = "CREATE_SECTION";
+export const GET_SECTION = "GET_SECTION";

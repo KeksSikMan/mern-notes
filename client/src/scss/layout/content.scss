@@ -1,0 +1,20 @@
+@import "../base/mixin";
+
+.wrapper-content {
+    overflow: auto;
+    height: 100vh;
+    margin-top: 50px;
+
+    .card-container {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 3px;
+        grid-auto-rows: minmax(100px, auto);
+
+        .card-item {
+            margin: 0 10px 10px 10px;
+            min-width: 350px;
+        }
+    }
+}

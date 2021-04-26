@@ -1,0 +1,64 @@
+@import "../base/mixin";
+@import "../base/varb";
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background: $BackgroundColor;
+    height: 100vh;
+    width: 100%;
+
+    .sidebar {
+        @include flexible();
+        height: 100%;
+        width: 20%;
+        width: clamp(20%, 35%, 50%);
+        background: rgba(0, 0, 0, 0.08);
+        margin-right: -30px;
+
+    }
+
+    .button-switches {
+
+        button {
+            @include outline-none;
+            background-color: white;
+            color: white;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+
+    .content {
+
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+
+        .content-panel {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 50px;
+            width: 100%;
+
+            .button-view {
+                margin-right: 40px;
+                @include outline-none;
+                cursor: pointer;
+                width: 38;
+                height: 31;
+
+            }
+        }
+
+
+
+    }
+
+}

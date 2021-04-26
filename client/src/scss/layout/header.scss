@@ -1,0 +1,41 @@
+@import "../base/mixin";
+
+.header {
+    width: 100%;
+    min-height: 96px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: rgb(0, 0, 0);
+
+    .header-title {
+        @include text-large (36px);
+        padding-left: 120px;
+        margin: 0 10px 0 0;
+
+    }
+
+    .header-profile {
+        margin: 0 10% 0 -15px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .user-icon {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            background-color: black;
+        }
+
+        .user-name {
+            @include text-normal;
+            padding-left: 10px;
+        }
+    }
+
+}

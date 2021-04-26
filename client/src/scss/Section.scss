@@ -1,0 +1,22 @@
+@import "./base/mixin";
+
+.section {
+    margin: 10px 10px 10px 10px;
+
+    .color {
+        @include border-radius(8px);
+        background: linear-gradient(180deg, #FF8282 0%, #FEA8A8 48.44%, #FF6B6B 98.96%);
+        min-width: 220px;
+        min-height: 48px;
+    }
+
+    button {
+        @include outline-none;
+        @include border-radius(8px);
+        @include text-normal;
+        min-width: 206px;
+        min-height: 48px;
+        cursor: pointer;
+        background-color: white;
+    }
+}
