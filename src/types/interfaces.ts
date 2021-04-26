@@ -14,10 +14,19 @@ export interface IUser extends Document {
   password: string;
 }
 
-export interface ISection extends Document {
-  name: string;
+export interface INote extends Document {
+  title: string;
   color?: string;
   description?: string;
   favorite?: boolean;
+  text?: string;
+}
+
+export interface ISection extends Document {
+  title: string;
+  color?: string;
+  description?: string;
+  favorite?: boolean;
+  notes: [INote];
   owner: Object;
 }

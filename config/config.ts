@@ -13,6 +13,7 @@ const MONGO_OPTIONS = {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 };
 
 /* 
