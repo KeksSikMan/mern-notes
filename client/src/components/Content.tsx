@@ -28,7 +28,7 @@ export const Content = () => {
   return (
     <div className="wrapper-content">
       <div className="card-container">
-        {contentData.map((note, index) => {
+        {/* {contentData.map((note, index) => {
           return (
             <>
               <div key={index} className="card-item">
@@ -41,7 +41,7 @@ export const Content = () => {
               </div>
             </>
           );
-        })}
+        })} */}
       </div>
     </div>
   );

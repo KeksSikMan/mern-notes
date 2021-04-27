@@ -7,7 +7,7 @@ import { sectionReducer } from "./section/reducer";
 
 const reducer = combineReducers({
   auth: authReducer,
-  section: sectionReducer,
+  sections: sectionReducer,
   notes: notesReducer,
   error: errorReducer,
 });
