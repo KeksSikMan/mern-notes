@@ -35,14 +35,7 @@ export const signUp = ({
       });
     })
     .catch((err) => {
-      dispatch(
-        returnErrors(
-          "REGISTER_FAIL",
-          err.response.data,
-          err.response.status,
-          err.response.statusText
-        )
-      );
+      dispatch(returnErrors("REGISTER_FAIL", err?.message));
       dispatch({ type: REGISTER_FAIL });
     });
 };
@@ -64,14 +57,7 @@ export const signIn = ({ email, password }: AuthActionType) => (
       });
     })
     .catch((err) => {
-      dispatch(
-        returnErrors(
-          "LOGIN_FAIL",
-          err.response.data,
-          err.response.status,
-          err.response.statusText
-        )
-      );
+      dispatch(returnErrors("LOGIN_FAIL", err?.message));
       dispatch({ type: LOGIN_FAIL });
     });
 };
@@ -118,15 +104,7 @@ export const loadUser = () => (dispatch: Function, getState: Function) => {
       });
     })
     .catch((err) => {
-      console.log(err);
-      dispatch(
-        returnErrors(
-          "Load user fail",
-          err.response.data,
-          err.response.status,
-          err.response.statusText
-        )
-      );
+      dispatch(returnErrors("GET_USER_FAIL", err?.message));
       dispatch({
         type: AUTH_ERROR,
       });

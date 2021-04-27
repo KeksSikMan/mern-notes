@@ -3,9 +3,7 @@ import { ErrorReducerTypes, ReduxActionType } from "../../types/redux.types";
 
 const initialState = {
   id: null,
-  data: null,
-  status: null,
-  statusText: null,
+  err: null,
 };
 
 export const errorReducer = (
@@ -16,16 +14,12 @@ export const errorReducer = (
     case GET_ERRORS:
       return {
         id: action.payload.id,
-        data: action.payload.data,
-        status: action.payload.status,
-        statusText: action.payload.statusText,
+        err: action.payload.err,
       };
     case CLEAR_ERRORS:
       return {
         id: null,
-        data: null,
-        status: null,
-        statusText: null,
+        err: null,
       };
     default:
       return state;

@@ -22,9 +22,7 @@ export type AuthReducerType = {
 // error reducer
 export type ErrorReducerTypes = {
   id: null | any;
-  data: null | any;
-  status: null | number;
-  statusText: null | string;
+  err: null | any;
 };
 
 // redux action
