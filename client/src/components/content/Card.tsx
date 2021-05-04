@@ -1,6 +1,6 @@
 import React from "react";
 import "../../scss/Card.scss";
-import { NoteType } from "../Content";
+import { NoteType } from "./index";
 
 export const Card = ({ nameNote, date, description }: NoteType) => {
   return (

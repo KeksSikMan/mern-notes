@@ -1,4 +1,5 @@
 @import "./base/mixin";
+@import "./base/varb";
 
 ul {
     list-style: none;
@@ -69,17 +70,17 @@ a {
 
 .dropdown {
     @include outline-none();
-    @include border-radius(18px);
+    @include border-radius($BorderRadius);
     position: absolute;
-    top: 60px;
-    width: 120px;
+    top: 65px;
+    width: 160px;
     height: 100px;
     transform: translateX(-45%);
     background-color: white;
     //padding: 10px;
     overflow: hidden;
     transition: height var(--speed) ease;
-
+    @include box-shadow(0, 0, 4px, rgba(0, 0, 0, 0.25));
 
     .menu {
         @include flexible ();

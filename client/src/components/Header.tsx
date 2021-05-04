@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../scss/layout/header.scss";
 
-import { Navbar } from "./Navbar";
+import { Navbar } from "./navbar/";
 import { DropDownMenu } from "./navbar/DropDownMenu";
 import { NavItem } from "./navbar/NavItem";
 
@@ -15,11 +15,10 @@ export const Header: React.FC = () => {
   const user = auth.user;
 
   const userName =
-    user != null ? user.firstName + " " + user.lastName : "loading";
+    user != null ? user.firstName + " " + user.lastName : "loading...";
 
   return (
     <>
-      {console.log(user)}
       <div className="header">
         <div className="header-title">Notes</div>
         <div className="header-profile">

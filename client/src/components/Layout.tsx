@@ -2,17 +2,17 @@ import React from "react";
 import "../scss/layout/main.scss";
 
 import { Header } from "./Header";
-import { SideBar } from "./SideBar";
-import { Content } from "./Content";
+import { SideBar } from "./sidebar/";
+import { Content } from "./content/";
 import { Footer } from "./Footer";
-import { Breadcrumbs } from "./Breadcrumbs";
-
-import IconView from "../assets/Frame.png";
+import { Breadcrumbs } from "./content/Breadcrumbs";
 
 export const Layout = () => {
   return (
     <>
-      <Header />
+      <div className="header">
+        <Header />
+      </div>
       <div className="main">
         <div className="sidebar">
           <SideBar />
@@ -23,15 +23,13 @@ export const Layout = () => {
         <div className="content">
           <div className="content-panel">
             <Breadcrumbs />
-
-            <button className="button-view">
-              <img src={IconView} alt="view change"></img>
-            </button>
           </div>
           <Content />
         </div>
       </div>
-      <Footer />
+      <div className="footer">
+        <Footer />
+      </div>
     </>
   );
 };

@@ -6,7 +6,7 @@ import { IUserRequest } from "interfaces";
 /** Create section */
 export const createSection = async (req: IUserRequest, res: Response) => {
   try {
-    const { title, description, favorite, color } = req.body;
+    const { title, description, favorite, color } = req.body; // =< 
 
     const section = new Section({
       title,

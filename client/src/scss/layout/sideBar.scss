@@ -1,8 +1,41 @@
 @import "../base/mixin";
+@import "../base/varb";
 
 .wrapper-sidebar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+
+    .create-section {
+        display: flex;
+        justify-content: center;
+        margin-top: 28px;
+
+        .button-create-section {
+            button {
+                @include flexible;
+                @include outline-none;
+                @include border-radius(50%);
+                @include text-normal;
+                @include box-shadow(0, 4px, 4px, rgba(0, 0, 0, 0.25));
+               
+                align-items: center;
+                justify-content: center;
+                min-width: 48px;
+                min-height: 48px;
+                cursor: pointer;
+                background-color: white;
+            }
+
+        }
+    }
 
     .group-section {
-        margin-top: -10px;
+        margin-top: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

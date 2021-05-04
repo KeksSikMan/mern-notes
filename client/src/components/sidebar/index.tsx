@@ -1,11 +1,13 @@
 import React from "react";
-import "../scss/layout/sideBar.scss";
-import { Section } from "./side/Section";
+import "../../scss/layout/sideBar.scss";
+import { Section } from "./Section";
 
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
-import { getSections } from "../redux/section/action";
-import { SectionReducerType } from "../redux/section/reducer";
+import { getSections } from "../../redux/section/action";
+import { SectionReducerType } from "../../redux/section/reducer";
+
+import { RiAddFill } from "react-icons/ri";
 
 export type SectionType = { nameSection: string; colorHEX: string };
 
@@ -25,10 +27,14 @@ export const SideBar = () => {
 
   return (
     <div className="wrapper-sidebar">
-      <div className="group-section">
+      <div className="create-section">
         <div className="button-create-section">
-          <button> create section</button>
+          <button>
+            <RiAddFill size="2em" />
+          </button>
         </div>
+      </div>
+      <div className="group-section">
         {sectionData ? (
           <>
             {sectionData.map((item, index) => {
