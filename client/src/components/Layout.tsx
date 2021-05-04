@@ -21,9 +21,7 @@ export const Layout = () => {
           <button></button>
         </div>
         <div className="content">
-          <div className="content-panel">
-            <Breadcrumbs />
-          </div>
+          <Breadcrumbs />
           <Content />
         </div>
       </div>

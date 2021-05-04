@@ -1,0 +1,7 @@
+@import "./base/mixin";
+@import "./base/varb";
+
+.bredcrumbs {
+    @include text-normal ();
+    margin: 50px;
+}

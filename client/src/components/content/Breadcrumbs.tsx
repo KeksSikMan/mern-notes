@@ -1,5 +1,10 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+
+import "../../scss/Breadcrumbs.scss";
 
 export const Breadcrumbs = () => {
-  return <div>breadcrumb/section_name/</div>;
+  const location = useLocation();
+
+  return <div className="bredcrumbs">home{location.pathname}</div>;
 };
