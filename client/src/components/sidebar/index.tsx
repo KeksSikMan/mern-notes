@@ -8,6 +8,8 @@ import { getSections } from "../../redux/section/action";
 import { SectionReducerType } from "../../redux/section/reducer";
 
 import { RiAddFill } from "react-icons/ri";
+import { Modal } from "../Modal";
+import { SectionCreate } from "./SectionCreate";
 
 export type SectionType = { nameSection: string; colorHEX: string };
 
@@ -16,6 +18,7 @@ type Sections = {
 };
 
 export const SideBar = () => {
+  const [isModal, setIsModal] = React.useState(false);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -29,9 +32,12 @@ export const SideBar = () => {
     <div className="wrapper-sidebar">
       <div className="create-section">
         <div className="button-create-section">
-          <button>
+          <button onClick={() => setIsModal(true)}>
             <RiAddFill size="2em" />
           </button>
+          <Modal isModal={isModal}>
+            <SectionCreate setIsModal={setIsModal} />
+          </Modal>
         </div>
       </div>
       <div className="group-section">

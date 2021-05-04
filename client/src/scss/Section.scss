@@ -41,7 +41,7 @@
 
             &:hover {
                 cursor: pointer;
-                background-color: darken($color: white, $amount: 10);
+                background-color: $FocusColor;
             }
 
         }
