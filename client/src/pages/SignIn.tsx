@@ -48,7 +48,7 @@ export const SignIn: React.FC<SignInProps> = () => {
         }}
       >
         <Form className="form">
-          <h1>Notes</h1>
+          <div className="title">Notes</div>
           <div className="form-group">
             <div className="input-field">
               <Field
@@ -71,19 +71,21 @@ export const SignIn: React.FC<SignInProps> = () => {
             </div>
           </div>
 
-          <div className="pass">
-            <Link className="link" to="/signup">
-              forgot password?
-            </Link>
-          </div>
-          <div className="button-sign">
-            <button>Sign In</button>
-          </div>
-          <div className="link_sign">
-            Don’t have an account?
-            <Link className="link" to="/signup">
-              Sign Up
-            </Link>
+          <div className="form-actions">
+            <div className="pass">
+              <Link className="link" to="/signup">
+                forgot password?
+              </Link>
+            </div>
+            <div className="button-sign">
+              <button>Sign In</button>
+            </div>
+            <div className="link_sign">
+              Don’t have an account?
+              <Link className="link" to="/signup">
+                Sign Up
+              </Link>
+            </div>
           </div>
         </Form>
       </Formik>

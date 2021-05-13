@@ -56,7 +56,7 @@ export const SignUp = () => {
         }}
       >
         <Form className="form">
-          <h1>Sign Up</h1>
+          <div className="title">Sign Up</div>
           <div className="form-group">
             <div className="input-field">
               <Field
@@ -110,21 +110,22 @@ export const SignUp = () => {
               ></Field>
             </div>
           </div>
-
-          <div className="button-sign">
-            <button type="submit">Sign Up</button>
-          </div>
-          <div className="terms-confition">
-            By clicking Sign Up, you agree on our
-            <Link className="link-terms-condition" to="/terms-condition">
-              terms and condition.
-            </Link>
-          </div>
-          <div className="link_sign">
-            Have an account?
-            <Link className="link" to="/signin">
-              Sign In
-            </Link>
+          <div className="form-actions">
+            <div className="button-sign">
+              <button type="submit">Sign Up</button>
+            </div>
+            <div className="terms-confition">
+              By clicking Sign Up, you agree on our
+              <Link className="link-terms-condition" to="/terms-condition">
+                terms and condition.
+              </Link>
+            </div>
+            <div className="link_sign">
+              Have an account?
+              <Link className="link" to="/signin">
+                Sign In
+              </Link>
+            </div>
           </div>
         </Form>
       </Formik>
