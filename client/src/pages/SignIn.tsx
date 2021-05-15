@@ -78,7 +78,7 @@ export const SignIn: React.FC<SignInProps> = () => {
               </Link>
             </div>
             <div className="button-sign">
-              <button>Sign In</button>
+              <button type="submit">Sign In</button>
             </div>
             <div className="link_sign">
               Don’t have an account?

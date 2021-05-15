@@ -1,7 +1,14 @@
-import { Field, Form, Formik } from "formik";
 import React from "react";
+import { Field, Form, Formik } from "formik";
+
 import { GrClose } from "react-icons/gr";
 import "../../scss/SectionModalForm.scss";
+
+// REDUX
+import { useDispatch } from "react-redux";
+import { createSection } from "../../redux/section/action";
+import { AuthReducerType } from "../../types/redux.types";
+import { useAppSelector } from "../../app/hooks";
 
 type Props = {
   setIsModal: any;
@@ -10,7 +17,15 @@ type Props = {
 export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
   const initialValues = {
     title: "",
+    description: "",
+    color: "#FFFFFF",
+    favorite: false,
   };
+
+  const auth = useAppSelector((state): AuthReducerType => state.auth);
+  const userId = auth.user?._id;
+
+  const dispatch = useDispatch();
 
   const handleClickCreate = () => {
     console.log("create section");
@@ -23,7 +38,13 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
         <Formik
           initialValues={initialValues}
           onSubmit={(values, actions) => {
-            const payload = {};
+            const payload = {
+              title: values.title,
+              description: values.description,
+              owner: userId,
+            };
+            console.log(payload);
+            dispatch(createSection(payload));
           }}
         >
           <Form className="form-section">
@@ -50,9 +71,10 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
                 ></Field>
               </div>
               <div className="input-field">hex code #:</div>
+
               <div className="input-field">favorite</div>
               <div className="button-section">
-                <button type="button" onClick={() => handleClickCreate()}>
+                <button type="submit" onClick={() => handleClickCreate()}>
                   <span>Submit</span>
                 </button>
               </div>

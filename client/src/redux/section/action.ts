@@ -14,7 +14,7 @@ import {
 } from "./types";
 
 export interface IActionSection {
-  _id: string;
+  _id?: string;
   title: string;
   description?: string;
   favorite?: boolean;
@@ -25,14 +25,14 @@ export interface IActionSection {
 /** Create section */
 export const createSection =
   ({ title, description, favorite, color, owner }: IActionSection) =>
-  (dispatch: Function) => {
+  (dispatch: Function, getState: Function) => {
     dispatch({
       type: SECTION_CREATE,
     });
     const body = JSON.stringify({ title, description, favorite, color, owner });
 
     api
-      .post("section/create", body)
+      .post("section/create", body, tokenConfig(getState))
       .then((res) => {
         dispatch(clearErrors());
         dispatch({
