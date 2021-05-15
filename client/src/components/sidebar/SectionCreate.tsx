@@ -22,7 +22,7 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
           }}
         >
           <Form className="form-section-create">
-            <h1>Create Section</h1>
+            <div className="title">Create Section</div>
             <div className="form-group">
               <div className="input-field">
                 <Field

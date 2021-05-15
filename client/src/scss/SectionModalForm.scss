@@ -18,7 +18,7 @@
         .form-section-create {
 
 
-            h1 {
+            .title {
                 @include text-normal;
                 text-align: center;
                 color: $DeepSkyBlue;
@@ -30,7 +30,7 @@
 
 
                 .input {
-
+                    @include box-shadow(0, 0, 4px, rgba(0, 0, 0, 0.25));
                     @include border-radius(18px);
                     @include text-normal;
                     @include outline-none;
@@ -47,7 +47,7 @@
                     &:focus {
                         &::placeholder {
                             transition: 0.3s;
-                            color: rgb(5, 93, 128);
+                            color: rgb(8, 164, 226);
                         }
                     }
                 }
