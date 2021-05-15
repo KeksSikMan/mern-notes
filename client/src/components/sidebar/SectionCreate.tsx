@@ -52,7 +52,7 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
               <div className="input-field">hex code #:</div>
               <div className="input-field">favorite</div>
               <div className="button-section">
-                <button type="button" onClick={() => setIsModal(false)}>
+                <button type="button" onClick={() => handleClickCreate()}>
                   <span>Submit</span>
                 </button>
               </div>
@@ -61,7 +61,7 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
         </Formik>
       </div>
       <div className="delete">
-        <button type="button" onClick={() => handleClickCreate()}>
+        <button type="button" onClick={() => setIsModal(false)}>
           <GrClose size="1.5em" />
         </button>
       </div>

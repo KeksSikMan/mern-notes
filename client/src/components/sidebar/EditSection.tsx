@@ -58,7 +58,7 @@ export const EditSection: React.FC<Props> = (props) => {
               <div className="input-field">hex code #:</div>
               <div className="input-field">favorite</div>
               <div className="button-section">
-                <button type="button" onClick={() => setIsEditModal(false)}>
+                <button type="button" onClick={() => handleClickUpdate()}>
                   <span>Submit</span>
                 </button>
               </div>
