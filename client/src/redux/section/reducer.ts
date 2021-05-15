@@ -1,5 +1,4 @@
-import { Nullable } from "../../types";
-import { ReduxActionType } from "../../types/redux.types";
+import { ReduxActionType, SectionReducerType } from "../../types/redux.types";
 import {
   SECTION_CREATE,
   SECTION_DELETE,
@@ -13,21 +12,9 @@ import {
   SECTIONS_GET_FAIL,
 } from "./types";
 
-export type ISection = {
-  title: string;
-  color: string;
-  description: string;
-  favorite: boolean;
-  owner: Object;
-};
 
-export type SectionReducerType = {
-  isLoaded: boolean;
-  isLoading: boolean;
-  isCreating: boolean;
-  isUpdating: boolean;
-  data: Nullable<[ISection]>;
-};
+
+
 
 const initialState = {
   isLoading: false,

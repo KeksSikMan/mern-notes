@@ -5,13 +5,19 @@ import { Section } from "./Section";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { getSections } from "../../redux/section/action";
-import { SectionReducerType } from "../../redux/section/reducer";
+import { SectionReducerType } from "../../types/redux.types";
 
 import { RiAddFill } from "react-icons/ri";
 import { Modal } from "../Modal";
 import { SectionCreate } from "./SectionCreate";
 
-export type SectionType = { nameSection: string; colorHEX: string };
+export type SectionType = {
+  nameSection: string;
+  colorHEX: string;
+  id: string;
+  favorite: boolean;
+  description: string;
+};
 
 type Sections = {
   sections: SectionReducerType;
@@ -47,8 +53,11 @@ export const SideBar = () => {
               return (
                 <Section
                   key={index}
+                  id={item._id}
                   nameSection={item.title}
                   colorHEX={item.color}
+                  favorite={item.favorite}
+                  description={item.description}
                 />
               );
             })}

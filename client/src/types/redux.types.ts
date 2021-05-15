@@ -3,6 +3,7 @@
 // <<<<<<<<<<<>>>>>>>>>>>>
 
 import { Nullable } from ".";
+import { ISection } from "./interfaces";
 
 // auth reducer
 export type UserType = {
@@ -17,6 +18,15 @@ export type AuthReducerType = {
   isAuthenticated: boolean;
   isLoading: boolean;
   user: Nullable<UserType>;
+};
+
+/** Section reducer */
+export type SectionReducerType = {
+  isLoaded: boolean;
+  isLoading: boolean;
+  isCreating: boolean;
+  isUpdating: boolean;
+  data: Nullable<[ISection]>;
 };
 
 // error reducer

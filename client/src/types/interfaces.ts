@@ -5,8 +5,7 @@ export interface IMsg {
   msg: string | any;
 }
 
-// AUTH
-
+/** AUTH */
 export interface ILogoutProps {
   logout(): void;
 }
@@ -26,3 +25,15 @@ export interface IConfigHeaders {
     [index: string]: string;
   };
 }
+
+/** Sections */
+export interface ISection {
+  _id: string;
+  title: string;
+  color: string;
+  description: string;
+  favorite: boolean;
+  owner: Object;
+}
+
+/** Notes */

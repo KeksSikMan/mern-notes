@@ -1,20 +1,26 @@
-import { Field, Form, Formik } from "formik";
 import React from "react";
-import { GrClose } from "react-icons/gr";
 import "../../scss/SectionModalForm.scss";
+import { Field, Form, Formik } from "formik";
+import { GrClose } from "react-icons/gr";
 
 type Props = {
-  setIsModal: any;
+  setIsEditModal: any;
+  title: string;
+  color: string;
+  favorite: boolean;
+  description: string;
 };
 
-export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
+export const EditSection: React.FC<Props> = (props) => {
+  const { setIsEditModal, title, description, favorite, color } = props;
+
   const initialValues = {
     title: "",
   };
 
-  const handleClickCreate = () => {
-    console.log("create section");
-    // TODO: create section
+  const handleClickUpdate = () => {
+    console.log("update section");
+    // TODO: update section
   };
 
   return (
@@ -27,7 +33,7 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
           }}
         >
           <Form className="form-section">
-            <div className="title">Create Section</div>
+            <div className="title">Edit Section</div>
             <div className="form-group">
               <div className="input-field">
                 <Field
@@ -35,7 +41,7 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
                   type="text"
                   name="title"
                   id="title"
-                  placeholder="Title"
+                  placeholder={title}
                   className="input"
                   border="2"
                 ></Field>
@@ -45,14 +51,14 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
                   type="text"
                   name="description"
                   id="description"
-                  placeholder="Description"
+                  placeholder={description}
                   className="input"
                 ></Field>
               </div>
               <div className="input-field">hex code #:</div>
               <div className="input-field">favorite</div>
               <div className="button-section">
-                <button type="button" onClick={() => setIsModal(false)}>
+                <button type="button" onClick={() => setIsEditModal(false)}>
                   <span>Submit</span>
                 </button>
               </div>
@@ -61,7 +67,7 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
         </Formik>
       </div>
       <div className="delete">
-        <button type="button" onClick={() => handleClickCreate()}>
+        <button type="button" onClick={() => setIsEditModal(false)}>
           <GrClose size="1.5em" />
         </button>
       </div>
