@@ -1,13 +1,13 @@
 import * as React from "react";
 import "../scss/layout/header.scss";
 
-import { Navbar } from "./navbar/";
+import { Navbar } from "./navbar";
 import { DropDownMenu } from "./navbar/DropDownMenu";
 import { NavItem } from "./navbar/NavItem";
 
 import { BiCaretDown } from "react-icons/bi";
-import { AuthReducerType } from "../types/redux.types";
-import { useAppSelector } from "../app/hooks";
+import { AuthReducerType } from "../../types/redux.types";
+import { useAppSelector } from "../../app/hooks";
 
 export const Header: React.FC = () => {
   const auth = useAppSelector((state): AuthReducerType => state.auth);

@@ -2,7 +2,7 @@
 import * as React from "react";
 import "../../scss/NavBar.scss";
 
-import { TNavItem } from "../../types";
+import { TNavItem } from "../../../types";
 
 export const NavItem: React.FC<TNavItem> = (props) => {
   const [open, setOpen] = React.useState(false);

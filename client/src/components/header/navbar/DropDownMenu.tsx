@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 import { BiLogOut } from "react-icons/bi";
 import { RiSettingsLine } from "react-icons/ri";
-import { logout } from "../../redux/auth/action";
+import { logout } from "../../../redux/auth/action";
 
 export const DropDownMenu: React.FC = () => {
   const dispatch = useDispatch();
