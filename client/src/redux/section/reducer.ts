@@ -12,10 +12,6 @@ import {
   SECTIONS_GET_FAIL,
 } from "./types";
 
-
-
-
-
 const initialState = {
   isLoading: false,
   isLoaded: false,
@@ -38,7 +34,14 @@ export const sectionReducer = (
     case SECTIONS_GET:
       return { ...state, isLoading: true };
     case SECTIONS_GET_SUCCESS:
-      return { ...state, data: payload, isLoading: false, isLoaded: true };
+      return {
+        ...state,
+        data: payload,
+        isLoading: false,
+        isLoaded: true,
+        isUpdating: false,
+        isCreating: false,
+      };
     case SECTION_CREATE_SUCCESS:
     case SECTION_UPDATE_SUCCESS:
       return {

@@ -13,9 +13,10 @@
     .sidebar {
         height: 100%;
         width: clamp(15%, 20%, 35%);
+
         background: $BackgroundColor;
         margin-right: -30px;
-
+        overflow: scroll;
     }
 
     .button-switches {
@@ -36,6 +37,7 @@
 
     .content {
         @include box-shadow(0, 10px, 10px, rgba(0, 0, 0, 0.25));
+        overflow: scroll;
         display: flex;
         flex-direction: column;
         height: 100%;

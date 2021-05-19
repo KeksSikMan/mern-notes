@@ -8,6 +8,9 @@ import {
   SECTION_CREATE,
   SECTION_CREATE_FAIL,
   SECTION_CREATE_SUCCESS,
+  SECTION_DELETE,
+  SECTION_DELETE_FAIL,
+  SECTION_DELETE_SUCCESS,
   SECTION_UPDATE,
   SECTION_UPDATE_FAIL,
   SECTION_UPDATE_SUCCESS,
@@ -88,4 +91,19 @@ export const updateSection =
   };
 
 /** Delete section */
-export const deleteSection = () => () => {};
+export const deleteSection =
+  ({ _id }: IActionSection) =>
+  (dispatch: Function, getState: Function) => {
+    dispatch({ type: SECTION_DELETE });
+    api
+      .delete("/", { params: { _id } })
+      .then((res) => {
+        console.log(res);
+        dispatch(clearErrors());
+        dispatch({ type: SECTION_DELETE_SUCCESS });
+      })
+      .catch((err) => {
+        dispatch(returnErrors("SECTION_DELETE_FAIL", err?.message));
+        dispatch({ type: SECTION_DELETE_FAIL });
+      });
+  };

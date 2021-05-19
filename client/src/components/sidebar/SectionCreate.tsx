@@ -18,8 +18,8 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
   const initialValues = {
     title: "",
     description: "",
-    color: "#FFFFFF",
-    favorite: false,
+    color: null,
+    favorite: null,
   };
 
   const auth = useAppSelector((state): AuthReducerType => state.auth);
