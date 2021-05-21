@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 
-import "../scss/Form.scss";
+import "../styles/scss/Form.scss";
 
 //REDUX
 import { useDispatch } from "react-redux";

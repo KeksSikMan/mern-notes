@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../scss/layout/header.scss";
+import "../../styles/scss/layout/header.scss";
 
 import { Navbar } from "./navbar";
 import { DropDownMenu } from "./navbar/DropDownMenu";

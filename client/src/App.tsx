@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./scss/App.scss";
+import "./styles/scss/App.scss";
 
 // ROUTING
 import { MainRouter } from "./routes";

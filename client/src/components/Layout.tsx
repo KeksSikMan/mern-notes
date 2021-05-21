@@ -1,5 +1,5 @@
 import React from "react";
-import "../scss/layout/main.scss";
+import "../styles/scss/layout/main.scss";
 
 import { Header } from "./header/Header";
 import { SideBar } from "./sidebar/";

@@ -10,11 +10,13 @@ import {
   SECTION_CREATE_FAIL,
   SECTION_UPDATE_FAIL,
   SECTIONS_GET_FAIL,
+  SECTION_DELETE_SUCCESS,
+  SECTION_DELETE_FAIL,
 } from "./types";
 
 const initialState = {
-  isLoading: false,
   isLoaded: false,
+  isLoading: false,
   isCreating: false,
   isUpdating: false,
   data: null,
@@ -39,26 +41,28 @@ export const sectionReducer = (
         data: payload,
         isLoading: false,
         isLoaded: true,
-        isUpdating: false,
-        isCreating: false,
       };
     case SECTION_CREATE_SUCCESS:
     case SECTION_UPDATE_SUCCESS:
+    case SECTION_DELETE_SUCCESS:
       return {
         ...state,
-        isUpdating: false,
-        isCreating: false,
-      };
-    case SECTIONS_GET_FAIL:
-    case SECTION_CREATE_FAIL:
-    case SECTION_UPDATE_FAIL:
-      return {
-        ...state,
-        data: null,
         isLoaded: false,
         isUpdating: false,
         isCreating: false,
       };
+    case SECTIONS_GET_FAIL:
+      return {
+        ...state,
+        data: null,
+        isLoading: false,
+        isLoaded: false,
+      };
+    case SECTION_CREATE_FAIL:
+    case SECTION_UPDATE_FAIL:
+    case SECTION_DELETE_FAIL:
+      return { ...state, isUpdating: false, isCreating: false };
+
     default:
       return state;
   }

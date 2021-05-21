@@ -1,5 +1,5 @@
 import React, { forwardRef, useImperativeHandle } from "react";
-import "../scss/Modal.scss";
+import "../styles/scss/Modal.scss";
 import ReactDOM from "react-dom";
 
 interface IModalProps {

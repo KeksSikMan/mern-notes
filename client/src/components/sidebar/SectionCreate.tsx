@@ -2,7 +2,7 @@ import React from "react";
 import { Field, Form, Formik } from "formik";
 
 import { GrClose } from "react-icons/gr";
-import "../../scss/SectionModalForm.scss";
+import "../../styles/scss/SectionModalForm.scss";
 
 // REDUX
 import { useDispatch } from "react-redux";
@@ -27,11 +27,6 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
 
   const dispatch = useDispatch();
 
-  const handleClickCreate = () => {
-    console.log("create section");
-    // TODO: create section
-  };
-
   return (
     <div className="content-wrapper">
       <div className="container">
@@ -43,8 +38,8 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
               description: values.description,
               owner: userId,
             };
-            console.log(payload);
             dispatch(createSection(payload));
+            setIsModal(false);
           }}
         >
           <Form className="form-section">
@@ -74,7 +69,7 @@ export const SectionCreate: React.FC<Props> = ({ setIsModal }) => {
 
               <div className="input-field">favorite</div>
               <div className="button-section">
-                <button type="submit" onClick={() => handleClickCreate()}>
+                <button type="submit">
                   <span>Submit</span>
                 </button>
               </div>

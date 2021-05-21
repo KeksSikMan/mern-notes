@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import * as React from "react";
-import "../../scss/NavBar.scss";
+import "../../../styles/scss/NavBar.scss";
 
 import { TNavItem } from "../../../types";
 

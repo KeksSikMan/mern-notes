@@ -1,10 +1,13 @@
 import React from "react";
-import "../../scss/SectionModalForm.scss";
+import "../../styles/scss/SectionModalForm.scss";
 import { Field, Form, Formik } from "formik";
 import { GrClose } from "react-icons/gr";
+import { updateSection } from "../../redux/section/action";
+import { useDispatch } from "react-redux";
 
 type Props = {
   setIsEditModal: any;
+  id: string;
   title: string;
   color: string;
   favorite: boolean;
@@ -12,16 +15,17 @@ type Props = {
 };
 
 export const EditSection: React.FC<Props> = (props) => {
-  const { setIsEditModal, title, description, favorite, color } = props;
+  const { setIsEditModal, id, title, description, favorite, color } = props;
 
   const initialValues = {
+    _id: id,
     title: "",
+    description: "",
+    color: null,
+    favorite: null,
   };
 
-  const handleClickUpdate = () => {
-    console.log("update section");
-    // TODO: update section
-  };
+  const dispatch = useDispatch();
 
   return (
     <div className="content-wrapper">
@@ -29,7 +33,13 @@ export const EditSection: React.FC<Props> = (props) => {
         <Formik
           initialValues={initialValues}
           onSubmit={(values, actions) => {
-            const payload = {};
+            const payload = {
+              _id: values._id,
+              title: values.title,
+              description: values.description,
+            };
+            dispatch(updateSection(payload));
+            setIsEditModal(false);
           }}
         >
           <Form className="form-section">
@@ -58,7 +68,7 @@ export const EditSection: React.FC<Props> = (props) => {
               <div className="input-field">hex code #:</div>
               <div className="input-field">favorite</div>
               <div className="button-section">
-                <button type="button" onClick={() => handleClickUpdate()}>
+                <button type="submit" >
                   <span>Submit</span>
                 </button>
               </div>

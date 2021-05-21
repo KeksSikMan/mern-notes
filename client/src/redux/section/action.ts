@@ -18,7 +18,7 @@ import {
 
 export interface IActionSection {
   _id?: string;
-  title: string;
+  title?: string;
   description?: string;
   favorite?: boolean;
   color?: string;
@@ -37,7 +37,6 @@ export const createSection =
     api
       .post("section/create", body, tokenConfig(getState))
       .then((res) => {
-        dispatch(clearErrors());
         dispatch({
           type: SECTION_CREATE_SUCCESS,
         });
@@ -54,7 +53,6 @@ export const getSections = () => (dispatch: Function, getState: Function) => {
   api
     .get("/section", tokenConfig(getState))
     .then((res) => {
-      dispatch(clearErrors());
       dispatch({
         type: SECTIONS_GET_SUCCESS,
         payload: res.data,
@@ -68,7 +66,7 @@ export const getSections = () => (dispatch: Function, getState: Function) => {
 
 /** Get one section */
 export const getSection = () => (dispatch: Function, getState: Function) => {
-  // get
+  //TODO get
 };
 
 /** Update section */
@@ -79,9 +77,8 @@ export const updateSection =
     const body = JSON.stringify({ title, description, favorite, color });
 
     api
-      .patch("/", body, { params: { _id } })
+      .patch(`/section/${_id}`, body, tokenConfig(getState))
       .then((res) => {
-        dispatch(clearErrors());
         dispatch({ type: SECTION_UPDATE_SUCCESS });
       })
       .catch((err) => {
@@ -96,10 +93,8 @@ export const deleteSection =
   (dispatch: Function, getState: Function) => {
     dispatch({ type: SECTION_DELETE });
     api
-      .delete("/", { params: { _id } })
+      .delete(`/section/${_id}`, tokenConfig(getState))
       .then((res) => {
-        console.log(res);
-        dispatch(clearErrors());
         dispatch({ type: SECTION_DELETE_SUCCESS });
       })
       .catch((err) => {

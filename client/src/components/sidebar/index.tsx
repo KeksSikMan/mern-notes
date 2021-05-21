@@ -1,5 +1,5 @@
 import React from "react";
-import "../../scss/layout/sideBar.scss";
+import "../../styles/scss/layout/sideBar.scss";
 import { Section } from "./Section";
 
 // REDUX
@@ -27,15 +27,29 @@ export const SideBar = () => {
   const [isModal, setIsModal] = React.useState(false);
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    dispatch(getSections());
-  }, [dispatch]);
+  const sectionsState = useSelector((state: Sections) => state.sections);
+  const sectionData = sectionsState.data;
+  const isLoadedSections = sectionsState.isLoaded;
+  const isLoadingSections = sectionsState.isLoading;
 
-  const sections = useSelector((state: Sections) => state.sections.data);
-  const sectionData = sections;
+  React.useEffect(() => {
+    if (!isLoadedSections) dispatch(getSections());
+  }, [isLoadedSections]);
+
+  if (isLoadingSections)
+    return (
+      <div className="wrapper-sidebar">
+        <div className="create-section">
+          <div className="group-section">
+            <h2>...loading</h2>
+          </div>
+        </div>
+      </div>
+    );
 
   return (
     <div className="wrapper-sidebar">
+      {console.log(isLoadedSections)}
       <div className="create-section">
         <div className="button-create-section">
           <button onClick={() => setIsModal(true)}>

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../scss/Section.scss";
+import "../../styles/scss/Section.scss";
 import { SectionType } from "./index";
 
 import { FiEdit2 } from "react-icons/fi";
@@ -9,6 +9,7 @@ import { GrClose } from "react-icons/gr";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "../Modal";
 import { EditSection } from "./EditSection";
+import { deleteSection } from "../../redux/section/action";
 
 export const Section = ({
   nameSection,
@@ -35,6 +36,8 @@ export const Section = ({
   const handleClickDelete = (id: string) => {
     console.log("Delete, id: ", id);
     // TODO: delete section
+    //const _id = { id };
+    dispatch(deleteSection({ _id: id }));
   };
 
   return (
@@ -51,6 +54,7 @@ export const Section = ({
         <Modal isModal={isEditModal}>
           <EditSection
             setIsEditModal={setIsEditModal}
+            id={id}
             title={nameSection}
             color={colorHEX}
             favorite={favorite}

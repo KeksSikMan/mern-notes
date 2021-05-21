@@ -1,5 +1,5 @@
 import React from "react";
-import "../../scss/layout/content.scss";
+import "../../styles/scss/layout/content.scss";
 //import { Card } from "./Card";
 
 export type NoteType = {

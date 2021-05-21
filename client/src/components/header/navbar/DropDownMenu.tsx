@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../../scss/NavBar.scss";
+import "../../../styles/scss/NavBar.scss";
 
 // REDUX
 import { useDispatch } from "react-redux";
