@@ -1,29 +1,29 @@
 import React from "react";
-import "../../styles/scss/SectionModalForm.scss";
 import { Field, Form, Formik } from "formik";
+
 import { GrClose } from "react-icons/gr";
-import { updateSection } from "../../redux/category/action";
+import "../../styles/scss/SectionModalForm.scss";
+
+// REDUX
 import { useDispatch } from "react-redux";
+import { createCategory } from "../../redux/category/action";
+import { AuthReducerType } from "../../types/redux.types";
+import { useAppSelector } from "../../app/hooks";
 
 type Props = {
-  setIsEditModal: any;
-  id: string;
-  title: string;
-  color: string;
-  favorite: boolean;
-  description: string;
+  setIsModal: any;
 };
 
-export const EditSection: React.FC<Props> = (props) => {
-  const { setIsEditModal, id, title, description, favorite, color } = props;
-
+export const CategoryCreate: React.FC<Props> = ({ setIsModal }) => {
   const initialValues = {
-    _id: id,
     title: "",
     description: "",
     color: null,
     favorite: null,
   };
+
+  const auth = useAppSelector((state): AuthReducerType => state.auth);
+  const userId = auth.user?._id;
 
   const dispatch = useDispatch();
 
@@ -34,16 +34,16 @@ export const EditSection: React.FC<Props> = (props) => {
           initialValues={initialValues}
           onSubmit={(values, actions) => {
             const payload = {
-              _id: values._id,
               title: values.title,
               description: values.description,
+              owner: userId,
             };
-            dispatch(updateSection(payload));
-            setIsEditModal(false);
+            dispatch(createCategory(payload));
+            setIsModal(false);
           }}
         >
           <Form className="form-section">
-            <div className="title">Edit Section</div>
+            <div className="title">Create Section</div>
             <div className="form-group">
               <div className="input-field">
                 <Field
@@ -51,7 +51,7 @@ export const EditSection: React.FC<Props> = (props) => {
                   type="text"
                   name="title"
                   id="title"
-                  placeholder={title}
+                  placeholder="Title"
                   className="input"
                   border="2"
                 ></Field>
@@ -61,14 +61,15 @@ export const EditSection: React.FC<Props> = (props) => {
                   type="text"
                   name="description"
                   id="description"
-                  placeholder={description}
+                  placeholder="Description"
                   className="input"
                 ></Field>
               </div>
               <div className="input-field">hex code #:</div>
+
               <div className="input-field">favorite</div>
               <div className="button-section">
-                <button type="submit" >
+                <button type="submit">
                   <span>Submit</span>
                 </button>
               </div>
@@ -77,7 +78,7 @@ export const EditSection: React.FC<Props> = (props) => {
         </Formik>
       </div>
       <div className="delete">
-        <button type="button" onClick={() => setIsEditModal(false)}>
+        <button type="button" onClick={() => setIsModal(false)}>
           <GrClose size="1.5em" />
         </button>
       </div>

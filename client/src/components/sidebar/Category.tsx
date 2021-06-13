@@ -8,10 +8,10 @@ import { GrClose } from "react-icons/gr";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "../Modal";
-import { EditSection } from "./EditSection";
-import { deleteSection } from "../../redux/category/action";
+import { EditCategory } from "./EditCategory";
+import { deleteCategory } from "../../redux/category/action";
 
-export const Section = ({
+export const Category = ({
   nameSection,
   colorHEX,
   description,
@@ -37,7 +37,7 @@ export const Section = ({
     console.log("Delete, id: ", id);
     // TODO: delete section
     //const _id = { id };
-    dispatch(deleteSection({ _id: id }));
+    dispatch(deleteCategory({ _id: id }));
   };
 
   return (
@@ -52,7 +52,7 @@ export const Section = ({
           <FiEdit2 size="1.5em" />
         </button>
         <Modal isModal={isEditModal}>
-          <EditSection
+          <EditCategory
             setIsEditModal={setIsEditModal}
             id={id}
             title={nameSection}

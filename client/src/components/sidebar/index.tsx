@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/scss/layout/sideBar.scss";
-import { Section } from "./Section";
+import { Section } from "./Category";
 
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
@@ -9,7 +9,7 @@ import { CategoryReducerType } from "../../types/redux.types";
 
 import { RiAddFill } from "react-icons/ri";
 import { Modal } from "../Modal";
-import { SectionCreate } from "./SectionCreate";
+import { SectionCreate } from "./CategoryCreate";
 
 export type SectionType = {
   nameSection: string;
