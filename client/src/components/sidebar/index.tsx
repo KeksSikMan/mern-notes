@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/scss/layout/sideBar.scss";
-import { Section } from "./Category";
+import { Category } from "./Category";
 
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
@@ -9,7 +9,7 @@ import { CategoryReducerType } from "../../types/redux.types";
 
 import { RiAddFill } from "react-icons/ri";
 import { Modal } from "../Modal";
-import { SectionCreate } from "./CategoryCreate";
+import { CategoryCreate } from "./CategoryCreate";
 
 export type SectionType = {
   nameSection: string;
@@ -56,7 +56,7 @@ export const SideBar = () => {
             <RiAddFill size="2em" />
           </button>
           <Modal isModal={isModal}>
-            <SectionCreate setIsModal={setIsModal} />
+            <CategoryCreate setIsModal={setIsModal} />
           </Modal>
         </div>
       </div>
@@ -65,7 +65,7 @@ export const SideBar = () => {
           <>
             {sectionData.map((item, index) => {
               return (
-                <Section
+                <Category
                   key={index}
                   id={item._id}
                   nameSection={item.title}
