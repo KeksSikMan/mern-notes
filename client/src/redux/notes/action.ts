@@ -1,1 +1,3 @@
-import { CREATE_NOTES, GET_NOTES } from "./types";
+import { NOTE_CREATE } from "./types";
+
+export const noteReducer = NOTE_CREATE;

@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/scss/SectionModalForm.scss";
 import { Field, Form, Formik } from "formik";
 import { GrClose } from "react-icons/gr";
-import { updateSection } from "../../redux/section/action";
+import { updateSection } from "../../redux/category/action";
 import { useDispatch } from "react-redux";
 
 type Props = {

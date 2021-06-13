@@ -4,8 +4,8 @@ import { Section } from "./Section";
 
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
-import { getSections } from "../../redux/section/action";
-import { SectionReducerType } from "../../types/redux.types";
+import { getAllCategories } from "../../redux/category/action";
+import { CategoryReducerType } from "../../types/redux.types";
 
 import { RiAddFill } from "react-icons/ri";
 import { Modal } from "../Modal";
@@ -19,22 +19,22 @@ export type SectionType = {
   description: string;
 };
 
-type Sections = {
-  sections: SectionReducerType;
+type Categories = {
+  categories: CategoryReducerType;
 };
 
 export const SideBar = () => {
   const [isModal, setIsModal] = React.useState(false);
   const dispatch = useDispatch();
 
-  const sectionsState = useSelector((state: Sections) => state.sections);
+  const sectionsState = useSelector((state: Categories) => state.categories);
   const sectionData = sectionsState.data;
   const isLoadedSections = sectionsState.isLoaded;
   const isLoadingSections = sectionsState.isLoading;
 
   React.useEffect(() => {
-    if (!isLoadedSections) dispatch(getSections());
-  }, [isLoadedSections]);
+    if (!isLoadedSections) dispatch(getAllCategories());
+  }, [dispatch, isLoadedSections]);
 
   if (isLoadingSections)
     return (

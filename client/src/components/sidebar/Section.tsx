@@ -9,7 +9,7 @@ import { GrClose } from "react-icons/gr";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "../Modal";
 import { EditSection } from "./EditSection";
-import { deleteSection } from "../../redux/section/action";
+import { deleteSection } from "../../redux/category/action";
 
 export const Section = ({
   nameSection,

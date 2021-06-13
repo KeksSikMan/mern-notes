@@ -6,7 +6,7 @@ import "../../styles/scss/SectionModalForm.scss";
 
 // REDUX
 import { useDispatch } from "react-redux";
-import { createSection } from "../../redux/section/action";
+import { createSection } from "../../redux/category/action";
 import { AuthReducerType } from "../../types/redux.types";
 import { useAppSelector } from "../../app/hooks";
 

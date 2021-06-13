@@ -27,7 +27,7 @@ export interface IConfigHeaders {
 }
 
 /** Sections */
-export interface ISection {
+export interface ICategory {
   _id: string;
   title: string;
   color: string;
