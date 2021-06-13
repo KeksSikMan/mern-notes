@@ -1,12 +1,12 @@
 import mongoose, { Schema } from "mongoose";
-import { ISection } from "interfaces";
+import { ICategory } from "../interfaces/ICategory";
 
-const SectionSchema: Schema = new Schema(
+const CategorySchema: Schema = new Schema(
   {
     title: { type: String, required: true },
+    description: { type: String, required: false, default: "" },
     favorite: { type: Boolean, default: false },
     color: { type: String, required: false, default: "#FFFFFF" },
-    description: { type: String, required: false, default: "" },
     owner: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   {
@@ -14,4 +14,4 @@ const SectionSchema: Schema = new Schema(
   }
 );
 
-export default mongoose.model<ISection>("Sections", SectionSchema);
+export default mongoose.model<ICategory>("Categories", CategorySchema);

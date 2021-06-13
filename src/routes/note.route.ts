@@ -12,13 +12,11 @@ import {
 
 const router = express();
 
-/** Create note */
-router.post("/:idSection/create", auth, createNote);
+router.post("/:idCategory/create", auth, createNote);
 
 /** Get all notes */
-router.get("/note/:idSection", auth, getNotes);
+router.get("/note/:idCategory", auth, getNotes);
 
-/** Delete note */
 router.delete("/note/:idNote", auth, deleteNote);
 
 /** Update note */
@@ -27,7 +25,7 @@ router.patch("/note/:idNote", auth, updateNote);
 /** Update note content */
 router.put("/note/:idNote", auth, updateContent);
 
-/** Clear note contenr */
+/** Clear note content */
 router.put("/note/:idNote/clear", auth, clearContent);
 
 module.exports = router;

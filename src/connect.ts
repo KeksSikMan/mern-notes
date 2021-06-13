@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import { config } from "../config/config";
 
 const db = config.mongo.db_url;
-
 const options = config.mongo.options;
 
 export default () => {
@@ -18,6 +17,5 @@ export default () => {
       });
   };
   connect();
-
   mongoose.connection.on("disconnected", connect);
 };

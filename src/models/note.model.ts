@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { Align, INote } from "../types/interfaces";
+import { Align } from "../interfaces";
+import { INote } from "../interfaces/INote";
 
 const Element: Schema = new Schema(
   {
@@ -21,7 +22,7 @@ export const NoteSchema: Schema = new Schema(
     color: { type: String, required: false, default: "#FFFFFF" },
     description: { type: String, required: false, default: "", max: 256 },
     content: [Element],
-    section: [{ type: Schema.Types.ObjectId, ref: "Sections" }],
+    category: [{ type: Schema.Types.ObjectId, ref: "Categories" }],
   },
   {
     timestamps: true,

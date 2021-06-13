@@ -1,5 +1,5 @@
 import * as express from "express";
-import { IUserRequest } from "interfaces";
+import { IUserRequest } from "../interfaces";
 import jwt from "jsonwebtoken";
 
 import { config } from "../../config/config";
@@ -12,12 +12,9 @@ export default (
   next: express.NextFunction
 ) => {
   const token = req.header("x-auth-token");
-  // Check for token
   if (!token)
     return res.status(401).json({ message: "No token, authorization denied" });
-
   try {
-    // Verify token
     const decoded = jwt.verify(token, jwtSecret);
     req.user = decoded;
     next();

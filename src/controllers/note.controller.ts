@@ -1,20 +1,18 @@
 import { Response } from "express";
-import Note from "../models/note.schema";
-import { IElement, INote, IUserRequest } from "../types/interfaces";
+import Note from "../models/note.model";
+import { IElement, IUserRequest } from "../interfaces";
+import { INote } from "../interfaces/INote";
 
-/** Create new note */
 export const createNote = async (req: IUserRequest, res: Response) => {
   try {
-    const idSection = req.params.idSection;
-
+    const idCategory = req.params.idCategory;
     const { title, description, favorite, color } = req.body;
-
     const note = new Note({
       title,
       description,
       favorite,
       color,
-      section: idSection,
+      category: idCategory,
     });
     await note.save();
     res.status(201).json(note);
@@ -26,18 +24,16 @@ export const createNote = async (req: IUserRequest, res: Response) => {
   }
 };
 
-/** Get all notes */
 export const getNotes = async (req: IUserRequest, res: Response) => {
   try {
-    const idSection = req.params.idSection;
-    const notes = await Note.find({ section: idSection });
+    const idCategory = req.params.idCategory;
+    const notes = await Note.find({ category: idCategory });
     res.status(200).json(notes);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
-/** Delete note */
 export const deleteNote = async (req: IUserRequest, res: Response) => {
   try {
     const note = await Note.deleteOne({ _id: req.params.idNote });
@@ -47,7 +43,6 @@ export const deleteNote = async (req: IUserRequest, res: Response) => {
   }
 };
 
-/** Update note */
 export const updateNote = async (req: IUserRequest, res: Response) => {
   try {
     const id = req.params.idNote;

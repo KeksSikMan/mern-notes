@@ -22,9 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(morgan("dev"));
 
 // api routes
-app.use("/api/auth", require("./routes/auth.routes"));
-app.use("/api/section", require("./routes/section.routes"));
-app.use("/api/section", require("./routes/notes.routes"));
+app.use("/api/auth", require("./routes/auth.route"));
+app.use("/api/category", require("./routes/category.route"));
+app.use("/api/category", require("./routes/note.route"));
 
 // Listener
 app.listen(port, () => {
