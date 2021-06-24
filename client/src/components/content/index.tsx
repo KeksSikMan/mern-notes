@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Card } from "./Card";
 import { INotesReducer } from "../../interfaces/redux.types";
 import { CategoriesType } from "../sidebar";
-import { activeCategory, getAllNotes } from "../../redux/notes/action";
+import { getAllNotes } from "../../redux/notes/action";
 import { RiAddFill } from "react-icons/ri";
 import { Modal } from "../Modal";
 import { CardCreate } from "./CardCreate";
