@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle } from "react";
+import React from "react";
 import "../styles/scss/Modal.scss";
 import ReactDOM from "react-dom";
 
@@ -16,5 +16,3 @@ export const Modal: React.FC<IModalProps> = ({ isModal, children }) => {
     document.body
   );
 };
-
-

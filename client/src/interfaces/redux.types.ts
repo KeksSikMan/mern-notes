@@ -21,7 +21,7 @@ export interface IAuthReducer {
 }
 
 //* Category reducer
-export interface CategoryReducerType {
+export interface ICategoryReducer {
   isLoaded: boolean;
   isLoading: boolean;
   isCreating: boolean;

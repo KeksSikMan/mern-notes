@@ -1,7 +1,4 @@
-import {
-  IReduxAction,
-  CategoryReducerType,
-} from "../../interfaces/redux.types";
+import { IReduxAction, ICategoryReducer } from "../../interfaces/redux.types";
 import {
   CATEGORIES_GET,
   CATEGORIES_GET_FAIL,
@@ -28,7 +25,7 @@ const initialState = {
 export const categoryReducer = (
   state = initialState,
   { type, payload }: IReduxAction
-): CategoryReducerType => {
+): ICategoryReducer => {
   switch (type) {
     case CATEGORY_CREATE:
       return { ...state, isCreating: true };

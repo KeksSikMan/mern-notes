@@ -5,14 +5,14 @@ import { Category } from "./Category";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCategories } from "../../redux/category/action";
-import { CategoryReducerType } from "../../interfaces/redux.types";
+import { ICategoryReducer } from "../../interfaces/redux.types";
 
 import { RiAddFill } from "react-icons/ri";
 import { Modal } from "../Modal";
 import { CategoryCreate } from "./CategoryCreate";
 
 export type CategoriesType = {
-  categories: CategoryReducerType;
+  categories: ICategoryReducer;
 };
 
 export const SideBar = () => {
