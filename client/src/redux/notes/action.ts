@@ -1,3 +1,7 @@
-import { NOTE_CREATE } from "./types";
+import { ICategory } from "../../interfaces/interfaces";
+import { ACTIVE_CATEGORY, NOTE_CREATE } from "./types";
 
-export const noteReducer = NOTE_CREATE;
+export const activeCategory =
+  (_id: string, title: string) => (dispatch: Function) => {
+    dispatch({ type: ACTIVE_CATEGORY, payload: { _id, title } });
+  };

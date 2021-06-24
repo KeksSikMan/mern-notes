@@ -1,3 +1,5 @@
+export const ACTIVE_CATEGORY = 'ACTIVE_CATEGORY';
+
 export const NOTE_CREATE = "CREATE/NOTE";
 export const NOTE_UPDATE = "UPDATE/NOTE";
 export const NOTE_DELETE = "DELETE/NOTE";

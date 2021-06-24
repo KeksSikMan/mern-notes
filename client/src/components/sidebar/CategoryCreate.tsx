@@ -7,7 +7,7 @@ import "../../styles/scss/SectionModalForm.scss";
 // REDUX
 import { useDispatch } from "react-redux";
 import { createCategory } from "../../redux/category/action";
-import { AuthReducerType } from "../../types/redux.types";
+import { IAuthReducer } from "../../interfaces/redux.types";
 import { useAppSelector } from "../../app/hooks";
 
 type Props = {
@@ -22,7 +22,7 @@ export const CategoryCreate: React.FC<Props> = ({ setIsModal }) => {
     favorite: null,
   };
 
-  const auth = useAppSelector((state): AuthReducerType => state.auth);
+  const auth = useAppSelector((state): IAuthReducer => state.auth);
   const userId = auth.user?._id;
 
   const dispatch = useDispatch();
@@ -77,7 +77,7 @@ export const CategoryCreate: React.FC<Props> = ({ setIsModal }) => {
           </Form>
         </Formik>
       </div>
-      <div className="delete">
+      <div className="close">
         <button type="button" onClick={() => setIsModal(false)}>
           <GrClose size="1.5em" />
         </button>

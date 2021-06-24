@@ -7,7 +7,7 @@ export const createNote = async (req: IUserRequest, res: Response) => {
   try {
     const idCategory = req.params.idCategory;
     const { title, description, favorite, color } = req.body;
-    const note = new Note({
+    const note: INote = new Note({
       title,
       description,
       favorite,

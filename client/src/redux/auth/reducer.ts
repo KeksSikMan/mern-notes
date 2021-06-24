@@ -1,4 +1,4 @@
-import { AuthReducerType, ReduxActionType } from "../../types/redux.types";
+import { IAuthReducer, IReduxAction } from "../../interfaces/redux.types";
 import {
   USER_LOADED,
   USER_LOADING,
@@ -19,8 +19,8 @@ export const initialState = {
 
 export const authReducer = (
   state = initialState,
-  { type, payload }: ReduxActionType
-): AuthReducerType => {
+  { type, payload }: IReduxAction
+): IAuthReducer => {
   switch (type) {
     case USER_LOADING:
       return { ...state, isLoading: true };

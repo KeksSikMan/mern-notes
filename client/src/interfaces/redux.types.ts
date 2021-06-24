@@ -5,45 +5,55 @@
 import { Nullable } from ".";
 import { ICategory } from "./interfaces";
 
-// auth reducer
-export type UserType = {
+//* auth reducer
+export interface IUser {
   _id: string;
   firstName: string;
   lastName: string;
   email: string;
-};
+}
 
-export type AuthReducerType = {
+export interface IAuthReducer {
   token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  user: Nullable<UserType>;
-};
+  user: Nullable<IUser>;
+}
 
-/** Section reducer */
-export type CategoryReducerType = {
+//* Category reducer
+export interface CategoryReducerType {
   isLoaded: boolean;
   isLoading: boolean;
   isCreating: boolean;
   isUpdating: boolean;
   data: Nullable<[ICategory]>;
-};
+}
+//*Notes reducer
 
-// error reducer
-export type ErrorReducerTypes = {
+export interface INotesReducer {
+  category: Nullable<ICategory>;
+  isLoaded: boolean;
+  isLoading: boolean;
+  isCreating: boolean;
+  isUpdating: boolean;
+  data: Nullable<[ICategory]>;
+}
+
+//* error reducer
+export interface IErrorReducer {
   id: null | any;
   err: null | any;
-};
+}
 
-// redux action
-export type ReduxActionType = {
+//* redux action
+export interface IReduxAction {
   type: string;
   payload?: any;
-};
+}
 
-export type AuthActionType = {
+export interface IAuthAction {
   firstName?: string;
   lastName?: string;
   email: string;
   password: string;
-};
+}

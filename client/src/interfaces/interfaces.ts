@@ -37,3 +37,24 @@ export interface ICategory {
 }
 
 /** Notes */
+export interface INote {
+  title: string;
+  color?: string;
+  description?: string;
+  favorite?: boolean;
+  element?: IElement;
+  category: Object;
+}
+export interface IElement {
+  text: String;
+  isList: Boolean;
+  isTask: Boolean;
+  indet: Number;
+  alignment: Align;
+}
+
+export enum Align {
+  left = 1,
+  center,
+  right,
+}

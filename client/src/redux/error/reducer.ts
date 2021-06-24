@@ -1,5 +1,5 @@
 import { GET_ERRORS, CLEAR_ERRORS } from "./types";
-import { ErrorReducerTypes, ReduxActionType } from "../../types/redux.types";
+import { IErrorReducer, IReduxAction } from "../../interfaces/redux.types";
 
 const initialState = {
   id: null,
@@ -8,8 +8,8 @@ const initialState = {
 
 export const errorReducer = (
   state = initialState,
-  action: ReduxActionType
-): ErrorReducerTypes => {
+  action: IReduxAction
+): IErrorReducer => {
   switch (action.type) {
     case GET_ERRORS:
       return {

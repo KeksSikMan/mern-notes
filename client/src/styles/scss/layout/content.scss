@@ -3,7 +3,8 @@
 .wrapper-content {
     overflow: auto;
     height: 100vh;
-    margin-top: 50px;
+    @include flexible();
+    @include text-normal;
 
     .card-container {
         margin-top: 20px;
@@ -11,6 +12,37 @@
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 3px;
         grid-auto-rows: minmax(100px, auto);
+
+        .create-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 88px;
+
+            .button-create-section {
+                button {
+                    @include flexible;
+                    @include outline-none;
+                    @include border-radius(50%);
+                    @include text-normal;
+                    @include box-shadow(0, 4px, 12px, rgba(0, 0, 0, 0.25));
+
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 90px;
+                    min-height: 90px;
+                    cursor: pointer;
+                    background-color: white;
+                }
+            }
+        }
+
+        .card-creater {
+            display: flex;
+            flex-direction: column;
+            min-width: 100px;
+            height: 240px;
+
+        }
 
         .card-item {
             margin: 0 10px 10px 10px;

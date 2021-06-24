@@ -7,5 +7,5 @@ export interface INote extends Document {
   description?: string;
   favorite?: boolean;
   element?: IElement;
-  section: Object;
+  category: Object;
 }

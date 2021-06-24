@@ -5,21 +5,13 @@ import { Category } from "./Category";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCategories } from "../../redux/category/action";
-import { CategoryReducerType } from "../../types/redux.types";
+import { CategoryReducerType } from "../../interfaces/redux.types";
 
 import { RiAddFill } from "react-icons/ri";
 import { Modal } from "../Modal";
 import { CategoryCreate } from "./CategoryCreate";
 
-export type SectionType = {
-  nameSection: string;
-  colorHEX: string;
-  id: string;
-  favorite: boolean;
-  description: string;
-};
-
-type Categories = {
+export type CategoriesType = {
   categories: CategoryReducerType;
 };
 
@@ -27,14 +19,16 @@ export const SideBar = () => {
   const [isModal, setIsModal] = React.useState(false);
   const dispatch = useDispatch();
 
-  const sectionsState = useSelector((state: Categories) => state.categories);
+  const sectionsState = useSelector(
+    (state: CategoriesType) => state.categories
+  );
   const sectionData = sectionsState.data;
   const isLoadedSections = sectionsState.isLoaded;
   const isLoadingSections = sectionsState.isLoading;
 
   React.useEffect(() => {
     if (!isLoadedSections) dispatch(getAllCategories());
-  }, [dispatch, isLoadedSections]);
+  }, [dispatch, isLoadedSections, sectionData]);
 
   if (isLoadingSections)
     return (
@@ -49,7 +43,6 @@ export const SideBar = () => {
 
   return (
     <div className="wrapper-sidebar">
-      {console.log(isLoadedSections)}
       <div className="create-section">
         <div className="button-create-section">
           <button onClick={() => setIsModal(true)}>
@@ -67,11 +60,12 @@ export const SideBar = () => {
               return (
                 <Category
                   key={index}
-                  id={item._id}
-                  nameSection={item.title}
-                  colorHEX={item.color}
+                  _id={item._id}
+                  title={item.title}
+                  color={item.color}
                   favorite={item.favorite}
                   description={item.description}
+                  owner={item.owner}
                 />
               );
             })}

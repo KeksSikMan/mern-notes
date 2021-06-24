@@ -2,7 +2,7 @@ import * as React from "react";
 import "../../../styles/scss/NavBar.scss";
 
 //types
-import { TNavBar } from "../../../types";
+import { TNavBar } from "../../../interfaces";
 
 export const Navbar: React.FC<TNavBar> = (props) => {
   return (

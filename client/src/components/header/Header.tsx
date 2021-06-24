@@ -6,11 +6,11 @@ import { DropDownMenu } from "./navbar/DropDownMenu";
 import { NavItem } from "./navbar/NavItem";
 
 import { BiCaretDown } from "react-icons/bi";
-import { AuthReducerType } from "../../types/redux.types";
+import { IAuthReducer } from "../../interfaces/redux.types";
 import { useAppSelector } from "../../app/hooks";
 
 export const Header: React.FC = () => {
-  const auth = useAppSelector((state): AuthReducerType => state.auth);
+  const auth = useAppSelector((state): IAuthReducer => state.auth);
 
   const user = auth.user;
 

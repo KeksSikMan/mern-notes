@@ -12,55 +12,52 @@ import {
 } from "./types";
 
 import { clearErrors, returnErrors } from "../error/action";
-import { AuthActionType } from "../../types/redux.types";
-import { IConfigHeaders } from "../../types/interfaces";
+import { IAuthAction } from "../../interfaces/redux.types";
+import { IConfigHeaders } from "../../interfaces/interfaces";
 
 /* Sign Up */
-export const signUp = ({
-  firstName,
-  lastName,
-  email,
-  password,
-}: AuthActionType) => (dispatch: Function) => {
-  // Request body
-  const body = JSON.stringify({ firstName, lastName, email, password });
+export const signUp =
+  ({ firstName, lastName, email, password }: IAuthAction) =>
+  (dispatch: Function) => {
+    // Request body
+    const body = JSON.stringify({ firstName, lastName, email, password });
 
-  api
-    .post("auth/signup", body)
-    .then((res) => {
-      dispatch(clearErrors());
-      dispatch({
-        type: REGISTER_SUCCESS,
-        payload: res.data,
+    api
+      .post("auth/signup", body)
+      .then((res) => {
+        dispatch(clearErrors());
+        dispatch({
+          type: REGISTER_SUCCESS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        dispatch(returnErrors("REGISTER_FAIL", err?.message));
+        dispatch({ type: REGISTER_FAIL });
       });
-    })
-    .catch((err) => {
-      dispatch(returnErrors("REGISTER_FAIL", err?.message));
-      dispatch({ type: REGISTER_FAIL });
-    });
-};
+  };
 
 /* Sign In */
-export const signIn = ({ email, password }: AuthActionType) => (
-  dispatch: Function
-) => {
-  // Request body
-  const body = JSON.stringify({ email, password });
+export const signIn =
+  ({ email, password }: IAuthAction) =>
+  (dispatch: Function) => {
+    // Request body
+    const body = JSON.stringify({ email, password });
 
-  api
-    .post("auth/signin", body)
-    .then((res) => {
-      dispatch(clearErrors());
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: res.data,
+    api
+      .post("auth/signin", body)
+      .then((res) => {
+        dispatch(clearErrors());
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        dispatch(returnErrors("LOGIN_FAIL", err?.message));
+        dispatch({ type: LOGIN_FAIL });
       });
-    })
-    .catch((err) => {
-      dispatch(returnErrors("LOGIN_FAIL", err?.message));
-      dispatch({ type: LOGIN_FAIL });
-    });
-};
+  };
 
 /* Logout User */
 export const logout = () => {

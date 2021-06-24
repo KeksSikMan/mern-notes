@@ -1,10 +1,17 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+
+// REDUX
+import { useSelector, useDispatch } from "react-redux";
+import { INotesReducer } from "../../interfaces/redux.types";
 
 import "../../styles/scss/Breadcrumbs.scss";
 
-export const Breadcrumbs = () => {
-  const location = useLocation();
+type Notes = {
+  notes: INotesReducer;
+};
 
-  return <div className="bredcrumbs">home{location.pathname}</div>;
+export const Breadcrumbs = () => {
+  const notesState = useSelector((state: Notes) => state.notes);
+  const category = notesState.category;
+  return <div className="bredcrumbs">{category?.title}</div>;
 };

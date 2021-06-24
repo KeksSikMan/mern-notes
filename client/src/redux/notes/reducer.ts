@@ -1,4 +1,6 @@
+import { INotesReducer, IReduxAction } from "../../interfaces/redux.types";
 import {
+  ACTIVE_CATEGORY,
   NOTES_GET,
   NOTES_GET_FAIL,
   NOTES_GET_SUCCESS,
@@ -13,36 +15,22 @@ import {
   NOTE_UPDATE_SUCCESS,
 } from "./types";
 
-enum Align {
-  left = 1,
-  center,
-  right,
-}
+const initialState = {
+  category: null,
+  isLoaded: false,
+  isLoading: false,
+  isCreating: false,
+  isUpdating: false,
+  data: null,
+};
 
-interface IElement {
-  text: String;
-  isList: Boolean;
-  isTask: Boolean;
-  indet: Number;
-  alignment: Align;
-}
-
-interface INote {
-  title: string;
-  color?: string;
-  description?: string;
-  favorite?: boolean;
-  element?: IElement;
-  section: Object;
-}
-
-const initialState = {};
-
-export const notesReducer: any = (
+export const notesReducer = (
   state = initialState,
-  { type, payload }: any
-) => {
+  { type, payload }: IReduxAction
+): INotesReducer => {
   switch (type) {
+    case ACTIVE_CATEGORY:
+      return { ...state, category: payload };
     case NOTE_CREATE:
       return { ...state, ...payload };
     case NOTE_UPDATE:

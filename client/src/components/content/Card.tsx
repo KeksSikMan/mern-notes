@@ -2,11 +2,11 @@ import React from "react";
 import "../../styles/scss/Card.scss";
 import { NoteType } from "./index";
 
-export const Card = ({ nameNote, date, description }: NoteType) => {
+export const Card = ({ title, date, description }: NoteType) => {
   return (
     <div className="card">
       <div className="card-title">
-        <div className="card-name">{nameNote}</div>
+        <div className="card-name">{title}</div>
         <div className="card-time">{date}</div>
       </div>
       <div className="card-content">
