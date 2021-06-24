@@ -15,17 +15,17 @@ const router = express();
 router.post("/:idCategory/create", auth, createNote);
 
 /** Get all notes */
-router.get("/note/:idCategory", auth, getNotes);
+router.get("/:idCategory", auth, getNotes);
 
-router.delete("/note/:idNote", auth, deleteNote);
+router.delete("/:idNote", auth, deleteNote);
 
 /** Update note */
-router.patch("/note/:idNote", auth, updateNote);
+router.patch("/:idNote", auth, updateNote);
 
 /** Update note content */
-router.put("/note/:idNote", auth, updateContent);
+router.put("/:idNote", auth, updateContent);
 
 /** Clear note content */
-router.put("/note/:idNote/clear", auth, clearContent);
+router.put("/:idNote/clear", auth, clearContent);
 
 module.exports = router;

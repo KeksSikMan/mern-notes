@@ -38,12 +38,14 @@ export interface ICategory {
 
 /** Notes */
 export interface INote {
+  _id: string;
   title: string;
   color?: string;
   description?: string;
   favorite?: boolean;
   element?: IElement;
-  category: Object;
+  category?: Object;
+  createdAt?: string;
 }
 export interface IElement {
   text: String;

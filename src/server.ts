@@ -24,7 +24,7 @@ app.use(morgan("dev"));
 // api routes
 app.use("/api/auth", require("./routes/auth.route"));
 app.use("/api/category", require("./routes/category.route"));
-app.use("/api/category", require("./routes/note.route"));
+app.use("/api/notes", require("./routes/note.route"));
 
 // Listener
 app.listen(port, () => {

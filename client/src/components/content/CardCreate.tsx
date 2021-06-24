@@ -5,16 +5,19 @@ import { GrClose } from "react-icons/gr";
 import "../../styles/scss/SectionModalForm.scss";
 
 // REDUX
-import { useDispatch } from "react-redux";
-import { createCategory } from "../../redux/category/action";
-import { IAuthReducer } from "../../interfaces/redux.types";
-import { useAppSelector } from "../../app/hooks";
+import { useDispatch, useSelector } from "react-redux";
+import { INotesReducer } from "../../interfaces/redux.types";
+import { createNote } from "../../redux/notes/action";
 
 type Props = {
   setIsModal: any;
 };
 
-export const CategoryCreate: React.FC<Props> = ({ setIsModal }) => {
+type Notes = {
+  notes: INotesReducer;
+};
+
+export const CardCreate: React.FC<Props> = ({ setIsModal }) => {
   const initialValues = {
     title: "",
     description: "",
@@ -22,8 +25,8 @@ export const CategoryCreate: React.FC<Props> = ({ setIsModal }) => {
     favorite: null,
   };
 
-  const auth = useAppSelector((state): IAuthReducer => state.auth);
-  const userId = auth.user?._id;
+  const notesState = useSelector((state: Notes) => state.notes);
+  const category = notesState.category;
 
   const dispatch = useDispatch();
 
@@ -36,14 +39,14 @@ export const CategoryCreate: React.FC<Props> = ({ setIsModal }) => {
             const payload = {
               title: values.title,
               description: values.description,
-              owner: userId,
+              id_category: category?._id,
             };
-            dispatch(createCategory(payload));
+            dispatch(createNote(payload));
             setIsModal(false);
           }}
         >
           <Form className="form-section">
-            <div className="title">Create Category</div>
+            <div className="title">Create Note Card</div>
             <div className="form-group">
               <div className="input-field">
                 <Field

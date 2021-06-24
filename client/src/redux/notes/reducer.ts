@@ -32,15 +32,15 @@ export const notesReducer = (
     case ACTIVE_CATEGORY:
       return { ...state, category: payload };
     case NOTE_CREATE:
-      return { ...state, ...payload };
+      return { ...state, isCreating: true };
     case NOTE_UPDATE:
-      return { ...state, ...payload };
+      return { ...state, isUpdating: true };
     case NOTE_DELETE:
-      return { ...state, ...payload };
+      return { ...state };
     case NOTES_GET:
-      return { ...state, ...payload };
+      return { ...state, isLoading: true };
     case NOTES_GET_SUCCESS:
-      return { ...state, ...payload };
+      return { ...state, data: payload, isLoading: false, isLoaded: true };
     case NOTE_CREATE_SUCCESS:
     case NOTE_UPDATE_SUCCESS:
     case NOTE_DELETE_SUCCESS:

@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Modal } from "../Modal";
 import { EditCategory } from "./EditCategory";
 import { deleteCategory } from "../../redux/category/action";
-import { activeCategory } from "../../redux/notes/action";
+import { activeCategory, getAllNotes } from "../../redux/notes/action";
 import { ICategory } from "../../interfaces/interfaces";
 
 export const Category = ({
@@ -25,6 +25,7 @@ export const Category = ({
 
   const handleClickSelectSection = (_id: string, title: string) => {
     dispatch(activeCategory(_id, title));
+    dispatch(getAllNotes(_id));
   };
 
   const handleClickEdit = (id: string) => {

@@ -7,23 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Card } from "./Card";
 import { INotesReducer } from "../../interfaces/redux.types";
 import { CategoriesType } from "../sidebar";
-import { activeCategory } from "../../redux/notes/action";
+import { activeCategory, getAllNotes } from "../../redux/notes/action";
 import { RiAddFill } from "react-icons/ri";
 import { Modal } from "../Modal";
-import { CategoryCreate } from "../sidebar/CategoryCreate";
-
-export type NoteType = {
-  title: string;
-  date: string;
-  description: string;
-};
-
-const contentData = [
-  { title: "one", date: "10.10", description: "123" },
-  { title: "two", date: "10.10", description: "3231" },
-  { title: "three", date: "10.10", description: "3123123" },
-  { title: "four", date: "10.10", description: "37892123" },
-];
+import { CardCreate } from "./CardCreate";
 
 type Notes = {
   notes: INotesReducer;
@@ -34,38 +21,50 @@ export const Content: React.FC = () => {
 
   //* Redux
   const dispatch = useDispatch();
+
   const notesState = useSelector((state: Notes) => state.notes);
+  const notesData = notesState.data;
+
   const categoriesState = useSelector(
     (state: CategoriesType) => state.categories
   );
   const categoryData = categoriesState.data;
   const category = notesState.category;
-  //*
 
-  // React.useEffect(() => {
-  //   if (categoryData != null)
-  //     dispatch(activeCategory(categoryData[0]?._id, categoryData[0]?.title));
-  // }, [dispatch, categoryData]);
+  React.useEffect(() => {
+    // if (categoryData != null)
+    // dispatch(activeCategory(categoryData[0]?._id, categoryData[0]?.title));
+    if (!notesState.isLoaded && notesState.category != null)
+      dispatch(getAllNotes(notesState.category._id));
+  }, [dispatch, categoryData, notesState.isLoaded, notesState.category]);
 
   return !category ? (
     <div className="wrapper-content">Select category</div>
   ) : (
     <div className="wrapper-content">
       <div className="card-container">
-        {contentData.map((note, index) => {
-          return (
-            <>
-              <div key={index} className="card-item">
-                <Card
-                  key={index}
-                  title={note.title}
-                  date={note.date}
-                  description={note.description}
-                />
-              </div>
-            </>
-          );
-        })}
+        {notesData ? (
+          <>
+            {notesData.map((note, index) => {
+              return (
+                <>
+                  <div key={index} className="card-item">
+                    <Card
+                      key={note._id}
+                      _id={note._id}
+                      title={note.title}
+                      createdAt={note.createdAt}
+                      description={note.description}
+                    />
+                  </div>
+                </>
+              );
+            })}
+          </>
+        ) : (
+          <>empty</>
+        )}
+
         <div className="card-item">
           <div className="card-creater">
             <div className="create-section">
@@ -74,7 +73,7 @@ export const Content: React.FC = () => {
                   <RiAddFill size="2em" />
                 </button>
                 <Modal isModal={isModal}>
-                  <CategoryCreate setIsModal={setIsModal} />
+                  <CardCreate setIsModal={setIsModal} />
                 </Modal>
               </div>
             </div>

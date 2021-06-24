@@ -3,7 +3,7 @@
 // <<<<<<<<<<<>>>>>>>>>>>>
 
 import { Nullable } from ".";
-import { ICategory } from "./interfaces";
+import { ICategory, INote } from "./interfaces";
 
 //* auth reducer
 export interface IUser {
@@ -36,7 +36,7 @@ export interface INotesReducer {
   isLoading: boolean;
   isCreating: boolean;
   isUpdating: boolean;
-  data: Nullable<[ICategory]>;
+  data: Nullable<[INote]>;
 }
 
 //* error reducer

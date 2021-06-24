@@ -19,18 +19,18 @@ export const SideBar = () => {
   const [isModal, setIsModal] = React.useState(false);
   const dispatch = useDispatch();
 
-  const sectionsState = useSelector(
+  const categoriesState = useSelector(
     (state: CategoriesType) => state.categories
   );
-  const sectionData = sectionsState.data;
-  const isLoadedSections = sectionsState.isLoaded;
-  const isLoadingSections = sectionsState.isLoading;
+  const categoryData = categoriesState.data;
+  const isLoadedCategories = categoriesState.isLoaded;
+  const isLoadingCategories = categoriesState.isLoading;
 
   React.useEffect(() => {
-    if (!isLoadedSections) dispatch(getAllCategories());
-  }, [dispatch, isLoadedSections, sectionData]);
+    if (!isLoadedCategories) dispatch(getAllCategories());
+  }, [dispatch, isLoadedCategories, categoryData]);
 
-  if (isLoadingSections)
+  if (isLoadingCategories)
     return (
       <div className="wrapper-sidebar">
         <div className="create-section">
@@ -54,12 +54,12 @@ export const SideBar = () => {
         </div>
       </div>
       <div className="group-section">
-        {sectionData ? (
+        {categoryData ? (
           <>
-            {sectionData.map((item, index) => {
+            {categoryData.map((item) => {
               return (
                 <Category
-                  key={index}
+                  key={item._id}
                   _id={item._id}
                   title={item.title}
                   color={item.color}
