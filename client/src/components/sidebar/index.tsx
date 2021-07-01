@@ -15,7 +15,11 @@ export type CategoriesType = {
   categories: ICategoryReducer;
 };
 
-export const SideBar = () => {
+interface SideBarProps {
+  active: boolean;
+}
+
+export const SideBar: React.FC<SideBarProps> = ({ active }) => {
   const [isModal, setIsModal] = React.useState(false);
   const dispatch = useDispatch();
 
@@ -30,11 +34,13 @@ export const SideBar = () => {
     if (!isLoadedCategories) dispatch(getAllCategories());
   }, [dispatch, isLoadedCategories, categoryData]);
 
+  if (!active) return null;
+
   if (isLoadingCategories)
     return (
       <div className="wrapper-sidebar">
-        <div className="create-section">
-          <div className="group-section">
+        <div className="create-category">
+          <div className="group-category">
             <h2>...loading</h2>
           </div>
         </div>
@@ -43,8 +49,8 @@ export const SideBar = () => {
 
   return (
     <div className="wrapper-sidebar">
-      <div className="create-section">
-        <div className="button-create-section">
+      <div className="create-category">
+        <div className="button-create-category">
           <button onClick={() => setIsModal(true)}>
             <RiAddFill size="2em" />
           </button>
@@ -53,7 +59,7 @@ export const SideBar = () => {
           </Modal>
         </div>
       </div>
-      <div className="group-section">
+      <div className="group-category">
         {categoryData ? (
           <>
             {categoryData.map((item) => {

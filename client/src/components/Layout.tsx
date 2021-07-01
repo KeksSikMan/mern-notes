@@ -8,17 +8,21 @@ import { Footer } from "./Footer";
 import { Breadcrumbs } from "./content/Breadcrumbs";
 
 export const Layout = () => {
+  const [sidebar, setSidebar] = React.useState(true);
+
+  const showSidebar = () => setSidebar(!sidebar);
   return (
     <>
       <div className="header">
         <Header />
       </div>
       <div className="main">
-        <div className="sidebar">
-          <SideBar />
+        <div className={sidebar ? "sidebar" : "sidebar-hide"}>
+          <SideBar active={sidebar} />
         </div>
+
         <div className="button-switches">
-          <button></button>
+          <button onClick={showSidebar}></button>
         </div>
         <div className="content">
           <Breadcrumbs />

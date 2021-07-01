@@ -11,12 +11,21 @@
 
 
     .sidebar {
-        height: 100%;
-        width: clamp(15%, 20%, 35%);
-
+        display: flex;
+        justify-content: center;
+        width: 290px;
+        height: 100vh;
         background: $BackgroundColor;
         margin-right: -30px;
         overflow: scroll;
+        // left: 0;
+        transition: 350ms;
+    }
+
+    .sidebar-hide {
+        // left: -100%;
+        margin-right: -30px;
+        transition: 850ms;
     }
 
     .button-switches {
